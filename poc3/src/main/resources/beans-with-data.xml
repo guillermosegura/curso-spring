@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="controller" class="mx.com.axity.poc.controller.Controller"
+    autowire="byName" />
+
+  <bean id="service" class="mx.com.axity.poc.service.impl.ServiceImpl"
+    autowire="byName" />
+
+  <bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
+
+
+  <bean name="user1" class="mx.com.axity.poc.to.Data">
+    <property name="id" value="1" />
+    <property name="name" value="Juan" />
+    <property name="lastname" value="Perez" />
+    <property name="values">
+      <array>
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+      </array>
+    </property>
+    <property name="list">
+      <list>
+        <value>azul</value>
+        <value>verde</value>
+      </list>
+    </property>
+    <property name="set">
+      <list>
+        <value>7</value>
+        <value>1</value>
+        <value>2</value>
+      </list>
+    </property>
+    <property name="map">
+      <map>
+        <entry key="1" value="Manzanilla" />
+        <entry key="2" value="Canela" />
+        <entry key="3" value="Limón" />
+      </map>
+    </property>
+    <property name="properties">
+      <props>
+        <prop key="config.password">password</prop>
+        <prop key="config.url">http://www.google.com</prop>
+        <prop key="config.usuario">usuario</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean name="user2" class="mx.com.axity.poc.to.Data">
+    <constructor-arg index="0" value="1" />
+    <property name="name" value="Mary" />
+    <property name="lastname" value="Lopez" />
+
+  </bean>
+
+  <bean name="user3" class="mx.com.axity.poc.to.Data">
+    <constructor-arg index="0" value="2" />
+    <constructor-arg index="1" value="Ivan" />
+    <constructor-arg index="2" value="Sanchez" />
+  </bean>
+
+  <bean id="dataUser" name="user4,empty" class="mx.com.axity.poc.to.Data" />
+
+
+</beans>

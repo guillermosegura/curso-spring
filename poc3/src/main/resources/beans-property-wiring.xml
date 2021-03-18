@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="controller" class="mx.com.axity.poc.controller.Controller">
+    <property name="service" ref="service"></property>
+  </bean>
+
+  <bean name="service" class="mx.com.axity.poc.service.impl.ServiceImpl">
+    <property name="dataDAO" ref="dataDAO"></property>
+  </bean>
+
+  <bean name="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
+
+
+</beans>
