@@ -6,6 +6,10 @@ public class Item
   private int id;
   private String sku;
   private String description;
+  
+  public Item(){
+    System.out.println("Se crea instancia de Item");
+  }
 
   public int getId()
   {

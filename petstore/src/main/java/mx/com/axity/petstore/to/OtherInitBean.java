@@ -3,9 +3,13 @@ package mx.com.axity.petstore.to;
 import java.util.ArrayList;
 import java.util.List;
 
+import mx.com.axity.petstore.service.ProductorService;
+
 public class OtherInitBean
 {
   private List<String> list;
+
+  private ProductorService productorService;
 
   public OtherInitBean()
   {
@@ -14,7 +18,7 @@ public class OtherInitBean
 
   public void init()
   {
-    list = new ArrayList<String>();
+    list = productorService.getData();
     System.out.println( "init OtherInitBean" );
   }
 
@@ -31,6 +35,15 @@ public class OtherInitBean
   public void destroy()
   {
     System.out.println( "destroy OtherInitBean" );
+  }
+
+  /**
+   * @param productorService the productorService to set
+   */
+  public void setProductorService( ProductorService productorService )
+  {
+    System.out.println("Se inyecta el servicio ProductorService");
+    this.productorService = productorService;
   }
 
 }

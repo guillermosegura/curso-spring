@@ -4,8 +4,12 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="otherInitBean" 
-    class="mx.com.axity.petstore.to.OtherInitBean"
-    init-method="init" destroy-method="destroy"/>
+  <bean id="otherInitBean" class="mx.com.axity.petstore.to.OtherInitBean"
+    init-method="init">
+    <property name="productorService" ref="productorService" />
+  </bean>
 
+  <bean id="productorService"
+    class="mx.com.axity.petstore.service.impl.ProductorServiceImpl" />
+    
 </beans>

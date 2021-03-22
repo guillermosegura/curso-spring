@@ -12,6 +12,10 @@ public class DestroyBean implements DisposableBean
   {
     System.out.println( "Constructor DestroyBean" );
   }
+  
+  public void init(){
+    System.out.println("Inicio DestroyBean (init) ");
+  }
 
   @Override
   public void destroy() throws Exception

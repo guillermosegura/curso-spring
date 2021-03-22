@@ -66,13 +66,6 @@ public class Data
     this.lastname = lastname;
   }
 
-  @Override
-  public String toString()
-  {
-    Gson gson = new GsonBuilder() .create();
-    return gson.toJson( this );
-  }
-
   public int[] getValues()
   {
     return values;
@@ -123,4 +116,10 @@ public class Data
     this.properties = properties;
   }
 
+  @Override
+  public String toString()
+  {
+    Gson gson = new GsonBuilder().create();
+    return gson.toJson( this );
+  }
 }

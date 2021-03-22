@@ -5,6 +5,11 @@ import mx.com.axity.poc.to.Data;
 
 public class DataDAOImpl implements DataDAO
 {
+  
+  public DataDAOImpl(){
+    System.out.println("Crea el bean DataDAOImpl");
+  }
+  
 
   @Override
   public void insert( Data data )

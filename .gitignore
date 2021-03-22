@@ -26,3 +26,5 @@ hs_err_pid*
 .classpath
 /target
 
+/poc5/target
+/poc4/target

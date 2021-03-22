@@ -5,11 +5,8 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="accountDao" scope="prototype"
-    class="mx.com.axity.petstore.dao.impl.AccountDaoImpl">
-  </bean>
-  <bean id="itemDao" class="mx.com.axity.petstore.dao.impl.ItemDaoImpl">
-  </bean>
-
-
+    class="mx.com.axity.petstore.dao.impl.AccountDaoImpl" />
+    
+  <bean id="itemDao" class="mx.com.axity.petstore.dao.impl.ItemDaoImpl" />
 
 </beans>

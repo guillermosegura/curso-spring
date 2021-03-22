@@ -11,10 +11,12 @@ public class ServiceImpl implements Service
 
   public ServiceImpl()
   {
+    System.out.println( "Se crea el bean ServiceImpl" );
   }
 
   public ServiceImpl( DataDAO dataDAO )
   {
+    System.out.println( "Se crea el bean ServiceImpl con dataDAO" );
     this.dataDAO = dataDAO;
   }
 
@@ -26,6 +28,7 @@ public class ServiceImpl implements Service
 
   public void setDataDAO( DataDAO dataDAO )
   {
+    System.out.println("Se inyecta DataDAO");
     this.dataDAO = dataDAO;
   }
 

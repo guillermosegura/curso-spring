@@ -4,14 +4,28 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
+  <!-- <bean id="controller" class="mx.com.axity.poc.controller.Controller"> -->
+  <!-- <constructor-arg index="0"> -->
+  <!-- <bean class="mx.com.axity.poc.service.impl.ServiceImpl"> -->
+  <!-- <constructor-arg index="0"> -->
+  <!-- <bean class="mx.com.axity.poc.dao.impl.DataDAOImpl" /> -->
+  <!-- </constructor-arg> -->
+  <!-- </bean> -->
+  <!-- </constructor-arg> -->
+  <!-- </bean> -->
+
   <bean id="controller" class="mx.com.axity.poc.controller.Controller">
     <constructor-arg index="0" ref="service" />
   </bean>
 
   <bean name="service" class="mx.com.axity.poc.service.impl.ServiceImpl">
-    <constructor-arg index="0"  >
+    <constructor-arg index="0">
       <bean class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
     </constructor-arg>
   </bean>
+
+  <!-- <bean id="service" class="mx.com.axity.poc.service.impl.ServiceImpl" 
+    /> -->
+  <!-- <bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" /> -->
 
 </beans>

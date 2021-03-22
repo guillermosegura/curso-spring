@@ -18,6 +18,7 @@ public class Singleton
     item1.setSku( "6500110001" );
 
     Item item2 = context.getBean( "item", Item.class );
+    print(item2);
     item2.setId( 2 );
     item2.setDescription( "Vaso" );
     item2.setSku( "6500110002" );

@@ -5,12 +5,13 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="controller" class="mx.com.axity.poc.controller.Controller"
-    autowire="byName" />
+    autowire="byName" lazy-init="true" />
 
   <bean id="service" class="mx.com.axity.poc.service.impl.ServiceImpl"
-    autowire="byName" />
+    autowire="byName" lazy-init="true" />
 
-  <bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
+  <bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl"
+    lazy-init="true" />
 
 
   <bean name="user1" class="mx.com.axity.poc.to.Data">
@@ -31,11 +32,11 @@
       </list>
     </property>
     <property name="set">
-      <list>
+      <set>
         <value>7</value>
         <value>1</value>
         <value>2</value>
-      </list>
+      </set>
     </property>
     <property name="map">
       <map>
