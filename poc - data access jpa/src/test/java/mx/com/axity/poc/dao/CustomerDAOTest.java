@@ -1,7 +1,5 @@
 package mx.com.axity.poc.dao;
 
-import static org.junit.Assert.fail;
-
 import java.util.List;
 
 import mx.com.axity.poc.entity.CustomerDO;
