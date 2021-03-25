@@ -24,17 +24,18 @@ public class AnotherSimpleServiceImpl implements SimpleService
     LOG.info( "doSomethingElse" );
   }
 
+  @Intercept
   @Override
   public void hello( String str )
   {
-    // TODO Auto-generated method stub
+    LOG.info( "Hello another {} !!", str );
     
   }
 
   @Override
   public void somethingStrange( Strange strange )
   {
-    // TODO Auto-generated method stub
+    LOG.info( "somethingStrange another {} ", strange.getId() );
     
   }
 

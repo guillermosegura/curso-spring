@@ -16,13 +16,15 @@ public class InterceptAspectMain
 
     ApplicationContext context = new ClassPathXmlApplicationContext( "beans-intercept-aspect.xml" );
 
-    SimpleService simpleService = context.getBean( "simpleService", SimpleService.class );
-    simpleService.doSomething();
-    simpleService.doSomethingElse();
+//    SimpleService simpleService = context.getBean( "simpleService", SimpleService.class );
+//    simpleService.doSomething();
+//    simpleService.doSomethingElse();
+//    simpleService.hello( "world!" );
     
     SimpleService anotherSimpleService = context.getBean( "anotherSimpleService", SimpleService.class );
     anotherSimpleService.doSomething();
     anotherSimpleService.doSomethingElse();
+    anotherSimpleService.hello( "world!" );
 
   }
 

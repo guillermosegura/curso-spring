@@ -27,7 +27,7 @@ public class TrackOperation
     if( args != null && args.length == 1 && args[0] instanceof Operation )
     {
       Operation operation = (Operation) args[0];
-      LOG.info( "Before {} operation, values: a={},  b={}", jp.getSignature().getName(), operation.getA(),
+      LOG.info( "beforeAdvice {} operation, values: a={},  b={}", jp.getSignature().getName(), operation.getA(),
         operation.getB() );
     }
 
@@ -142,7 +142,7 @@ public class TrackOperation
       if( args != null && args.length == 1 && args[0] instanceof Operation )
       {
         operation = (Operation) args[0];
-        LOG.info( "Before {} operation, values: a={},  b={}", pjp.getSignature().getName(), operation.getA(),
+        LOG.info( "Before aroundAdvice {} operation, values: a={},  b={}", pjp.getSignature().getName(), operation.getA(),
           operation.getB() );
 
         if( operation.getA() == null )
@@ -189,7 +189,7 @@ public class TrackOperation
     {
       if( operation != null )
       {
-        LOG.info( "Before {} operation, values: a={},  b={}", pjp.getSignature().getName(), operation.getA(),
+        LOG.info( "Before aroundParamsAdvice {} operation, values: a={},  b={}", pjp.getSignature().getName(), operation.getA(),
           operation.getB() );
 
         if( operation.getA() == null )
@@ -219,7 +219,7 @@ public class TrackOperation
     }
     catch( Throwable e )
     {
-      LOG.error( e.getMessage(), e );
+      LOG.error("aroundParamsAdvice excepcion: ", e.getMessage()  );
       result = extractOperation( operation );
       ((Operation) result).setCode( 2 );
       ((Operation) result).setMessage( e.getMessage() );

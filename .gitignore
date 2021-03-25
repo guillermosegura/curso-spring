@@ -33,3 +33,5 @@ hs_err_pid*
 /poc8/target
 /poc - aop/target
 /poc - aspectj/target
+/poc - data access jpa/target
+/poc - data access/target

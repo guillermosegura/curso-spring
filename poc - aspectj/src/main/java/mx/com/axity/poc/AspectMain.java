@@ -21,7 +21,7 @@ public class AspectMain
     ArithmeticController arithmeticController = context.getBean( ArithmeticController.class );
 
     Operation op = OperationFactory.add( 1, 3 );
-    op = arithmeticController.execute( op );
+//    op = arithmeticController.execute( op );
 
     try
     {
