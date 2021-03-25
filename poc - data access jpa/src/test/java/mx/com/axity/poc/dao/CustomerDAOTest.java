@@ -99,6 +99,8 @@ public class CustomerDAOTest
 
     this.customerDAO.create( customerDO );
 
+    Assert.assertNotNull( this.customerDAO.get( customerDO.getCustomerNumber() ) );
+
   }
 
   @Test
@@ -122,7 +124,24 @@ public class CustomerDAOTest
   @Test
   public void testDelete()
   {
-    fail( "Not yet implemented" );
+    CustomerDO customerDO = new CustomerDO();
+    customerDO.setCustomerName( "Test" );
+    customerDO.setContactLastName( "Lopez" );
+    customerDO.setContactFirstName( "Martha" );
+    customerDO.setAddressLine1( "Calle 5 de Mayo 150" );
+    customerDO.setCity( "CDMX" );
+    customerDO.setCountry( "México" );
+    customerDO.setPhone( "+52 5658 1111" );
+    customerDO.setPostalCode( "11500" );
+
+    this.customerDAO.create( customerDO );
+
+    Long customerNumber = customerDO.getCustomerNumber();
+    Assert.assertNotNull( customerNumber );
+
+    this.customerDAO.delete( customerNumber );
+
+    Assert.assertNull( this.customerDAO.get( customerNumber ) );
   }
 
 }

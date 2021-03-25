@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>mx.com.axity</groupId>
-  <artifactId>poc-adata-access</artifactId>
+  <artifactId>poc-data-access</artifactId>
   <version>1.0.0</version>
   <name>POC con Spring :: Data Access</name>
   <description>POC con Spring :: Data Access</description>
