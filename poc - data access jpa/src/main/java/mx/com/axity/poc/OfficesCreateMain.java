@@ -19,7 +19,7 @@ public class OfficesCreateMain
     OfficeService officeService = context.getBean( OfficeService.class );
 
     Office office = new Office();
-    office.setOfficeCode( "8" );
+    office.setOfficeCode( "10" );
     office.setCity( "CDMX" );
     office.setPhone( "+52 55 50 46 92 00" );
     office.setAddressLine1( "Av Ejército Nacional 350," );

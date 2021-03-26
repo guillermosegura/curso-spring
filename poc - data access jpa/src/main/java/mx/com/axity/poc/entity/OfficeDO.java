@@ -1,5 +1,6 @@
 package mx.com.axity.poc.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,8 +17,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "offices")
-public class OfficeDO
+public class OfficeDO implements Serializable
 {
+  private static final long serialVersionUID = 9083622353986465393L;
 
   @Id
   @Column(name = "officeCode", length = 10)

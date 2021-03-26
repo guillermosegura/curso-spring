@@ -22,6 +22,6 @@ public class OfficesDeleteMain
 
     officeService.delete( "8" );
 
-    LOG.info( "{}", officeService.get( "8" ) );
+    LOG.info( "{}", officeService.get( "9" ) );
   }
 }

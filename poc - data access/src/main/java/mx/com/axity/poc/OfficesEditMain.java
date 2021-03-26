@@ -20,6 +20,7 @@ public class OfficesEditMain
 
     Office office = officeService.get( "8" );
     office.setCity( "Cd. de México" );
+    office.setOfficeCode( "9999" );
 
     officeService.edit( office );
 

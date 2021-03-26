@@ -1,5 +1,7 @@
 package mx.com.axity.poc.entity;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -19,14 +21,17 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "payments")
-public class PaymentDO
+public class PaymentDO implements Serializable
 {
+
+  private static final long serialVersionUID = 2263012586989817489L;
 
   @EmbeddedId
   private PaymentId id;
 
   @ManyToOne(fetch = FetchType.EAGER, optional = false)
-  @JoinColumn(name = "customerNumber", referencedColumnName = "customerNumber", insertable = false, updatable = false)
+  @JoinColumn(name = "customerNumber", referencedColumnName = "customerNumber", 
+    insertable = false, updatable = false)
   private CustomerDO customer;
 
   @Column(name = "paymentDate", nullable = false)
@@ -34,7 +39,7 @@ public class PaymentDO
   private Date paymentDate;
 
   @Column(name = "amount", precision = 10, scale = 2)
-  private double amount;
+  private BigDecimal amount;
 
   /**
    * @return the id
@@ -87,7 +92,7 @@ public class PaymentDO
   /**
    * @return the amount
    */
-  public double getAmount()
+  public BigDecimal getAmount()
   {
     return amount;
   }
@@ -95,7 +100,7 @@ public class PaymentDO
   /**
    * @param amount the amount to set
    */
-  public void setAmount( double amount )
+  public void setAmount( BigDecimal amount )
   {
     this.amount = amount;
   }

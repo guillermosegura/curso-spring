@@ -89,11 +89,18 @@ public class OfficeDAOImpl implements OfficeDAO
   public void create( Office office )
   {
 
-    this.jdbcTemplate.update(
-      QUERY_CREATE,
-      new Object[] { office.getOfficeCode(), office.getCity(), office.getPhone(), office.getAddressLine1(),
-          office.getAddressLine2(), office.getState(), office.getCountry(), office.getPostalCode(),
-          office.getTerritory() } );
+    if( this.get( office.getOfficeCode() ) == null )
+    {
+      this.jdbcTemplate.update(
+        QUERY_CREATE,
+        new Object[] { office.getOfficeCode(), office.getCity(), office.getPhone(), office.getAddressLine1(),
+            office.getAddressLine2(), office.getState(), office.getCountry(), office.getPostalCode(),
+            office.getTerritory() } );
+    }
+    else
+    {
+      throw new RuntimeException( "Ya existe el registro de la oficina " );
+    }
 
   }
 
@@ -103,12 +110,18 @@ public class OfficeDAOImpl implements OfficeDAO
   @Override
   public void edit( Office office )
   {
-    this.jdbcTemplate
-        .update(
-          QUERY_UPDATE,
-          new Object[] { office.getCity(), office.getPhone(), office.getAddressLine1(), office.getAddressLine2(),
-              office.getState(), office.getCountry(), office.getPostalCode(), office.getTerritory(),
-              office.getOfficeCode() } );
+    if( this.get( office.getOfficeCode() ) != null )
+    {
+      this.jdbcTemplate.update(
+        QUERY_UPDATE,
+        new Object[] { office.getCity(), office.getPhone(), office.getAddressLine1(), office.getAddressLine2(),
+            office.getState(), office.getCountry(), office.getPostalCode(), office.getTerritory(),
+            office.getOfficeCode() } );
+    }
+    else
+    {
+      throw new RuntimeException( "No existe el registro de la oficina " );
+    }
 
   }
 

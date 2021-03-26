@@ -1,5 +1,6 @@
 package mx.com.axity.poc.dao;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -68,7 +69,7 @@ public class PaymentDAOTest
     PaymentDO payment = new PaymentDO();
     payment.setId( new PaymentId( 124L, "QUACK101" ) );
     payment.setPaymentDate( createDate( 10, Calendar.MARCH, 2020 ) );
-    payment.setAmount( 5000.0 );
+    payment.setAmount( new BigDecimal( 5000.0 ) );
     paymentDAO.create( payment );
 
     Assert.assertNotNull( paymentDAO.get( 124L, "QUACK101" ) );
@@ -78,12 +79,12 @@ public class PaymentDAOTest
   public void testEdit()
   {
     PaymentDO payment = paymentDAO.get( 124L, "CQ287967" );
-    payment.setAmount( 11050.0 );
+    payment.setAmount( new BigDecimal( 11050.0 ) );
     paymentDAO.edit( payment );
 
     payment = paymentDAO.get( 124L, "CQ287967" );
     Assert.assertNotNull( payment );
-    Assert.assertEquals( 11050.0, payment.getAmount(), 0.01 );
+    Assert.assertEquals( 11050.0, payment.getAmount().doubleValue(), 0.01 );
     log( payment );
   }
 

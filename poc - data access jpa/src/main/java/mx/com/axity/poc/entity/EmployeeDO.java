@@ -1,5 +1,6 @@
 package mx.com.axity.poc.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,8 +21,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "employees")
-public class EmployeeDO
+public class EmployeeDO implements Serializable
 {
+
+  private static final long serialVersionUID = 8294455790159202317L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "employeeNumber")

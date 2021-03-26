@@ -34,7 +34,7 @@ public class OfficeDAOImpl implements OfficeDAO
   public List<OfficeDO> findAll()
   {
 
-    TypedQuery<OfficeDO> query = em.createQuery( "from OfficeDO as o ORDER BY o.officeCode", OfficeDO.class );
+    TypedQuery<OfficeDO> query = em.createQuery( "SELECT o FROM OfficeDO as o ORDER BY o.officeCode", OfficeDO.class );
     return query.getResultList();
   }
 

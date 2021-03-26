@@ -1,5 +1,7 @@
 package mx.com.axity.poc.entity;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,8 +22,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "customers")
-public class CustomerDO
+public class CustomerDO implements Serializable
 {
+
+  private static final long serialVersionUID = -3565538651566659414L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "customerNumber")
@@ -62,7 +67,7 @@ public class CustomerDO
   private EmployeeDO salesRepEmployee;
 
   @Column(name = "creditLimit", precision = 10, scale = 2)
-  private Double creditLimit;
+  private BigDecimal creditLimit;
 
   @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
   private List<PaymentDO> payments;
@@ -262,7 +267,7 @@ public class CustomerDO
   /**
    * @return the creditLimit
    */
-  public Double getCreditLimit()
+  public BigDecimal getCreditLimit()
   {
     return creditLimit;
   }
@@ -270,7 +275,7 @@ public class CustomerDO
   /**
    * @param creditLimit the creditLimit to set
    */
-  public void setCreditLimit( Double creditLimit )
+  public void setCreditLimit( BigDecimal creditLimit )
   {
     this.creditLimit = creditLimit;
   }
