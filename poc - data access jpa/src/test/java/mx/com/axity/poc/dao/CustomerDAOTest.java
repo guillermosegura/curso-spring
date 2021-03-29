@@ -115,7 +115,7 @@ public class CustomerDAOTest
     customer = this.customerDAO.get( 125L );
     Assert.assertNotNull( customer );
     Assert.assertNotNull( customer.getSalesRepEmployee() );
-    Assert.assertEquals( 125L, customer.getSalesRepEmployee().getEmployeeNumber().longValue() );
+    Assert.assertEquals( 1165L, customer.getSalesRepEmployee().getEmployeeNumber().longValue() );
 
   }
 
