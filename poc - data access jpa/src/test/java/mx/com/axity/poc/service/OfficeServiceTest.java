@@ -41,9 +41,30 @@ public class OfficeServiceTest
   @Test
   public void testFindByTerritory()
   {
-    fail( "Not yet implemented" );
+    List<Office> offices = officeService.findByTerritory( "NA" );
+
+    Assert.assertNotNull( offices );
+    Assert.assertFalse( offices.isEmpty() );
+    
+    for( Office office : offices )
+    {
+      LOG.info( "{}", office );
+    }
   }
 
+  /**
+   * Esta prueba valida el escenario donde no hay registro
+   */
+  @Test
+  public void testFindByTerritory_empty()
+  {
+    List<Office> offices = officeService.findByTerritory( "ACME" );
+
+    Assert.assertNotNull( offices );
+    Assert.assertTrue( offices.isEmpty() );
+    
+  }
+  
   @Test
   public void testGet()
   {
