@@ -23,25 +23,6 @@ public class PaymentId implements Serializable
   @Column(name = "checkNumber", nullable = false)
   private String checkNumber;
 
-  @Override
-  public boolean equals( Object object )
-  {
-    boolean isEquals = false;
-    if( this == object )
-    {
-      isEquals = true;
-    }
-    else if( object != null && object.getClass().equals( this.getClass() ) )
-    {
-      PaymentId that = (PaymentId) object;
-
-      // isEquals = this.customerNumber.equals( that.checkNumber );
-      isEquals = Objects.equals( this.customerNumber, that.customerNumber );
-      isEquals = isEquals && Objects.equals( this.checkNumber, that.checkNumber );
-    }
-    return isEquals;
-  }
-
   /**
    * Constructor default
    */
@@ -91,6 +72,31 @@ public class PaymentId implements Serializable
   public void setCheckNumber( String checkNumber )
   {
     this.checkNumber = checkNumber;
+  }
+
+  @Override
+  public boolean equals( Object object )
+  {
+    boolean isEquals = false;
+    if( this == object )
+    {
+      isEquals = true;
+    }
+    else if( object != null && object.getClass().equals( this.getClass() ) )
+    {
+      PaymentId that = (PaymentId) object;
+
+      // isEquals = this.customerNumber.equals( that.checkNumber );
+      isEquals = Objects.equals( this.customerNumber, that.customerNumber );
+      isEquals = isEquals && Objects.equals( this.checkNumber, that.checkNumber );
+    }
+    return isEquals;
+  }
+
+  @Override
+  public int hashCode()
+  {
+    return Objects.hash( this.customerNumber, this.checkNumber );
   }
 
 }
