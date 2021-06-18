@@ -1,6 +1,7 @@
 package mx.com.axity.poc.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -26,13 +27,17 @@ public class PaymentId implements Serializable
   public boolean equals( Object object )
   {
     boolean isEquals = false;
-    if (this == object){
+    if( this == object )
+    {
       isEquals = true;
-    } else if (object != null && object.getClass().equals( this.getClass() )){
+    }
+    else if( object != null && object.getClass().equals( this.getClass() ) )
+    {
       PaymentId that = (PaymentId) object;
-      
-      isEquals = this.customerNumber.equals( that.checkNumber );
-     // Objects.is      
+
+      // isEquals = this.customerNumber.equals( that.checkNumber );
+      isEquals = Objects.equals( this.customerNumber, that.customerNumber );
+      isEquals = isEquals && Objects.equals( this.checkNumber, that.checkNumber );
     }
     return isEquals;
   }
