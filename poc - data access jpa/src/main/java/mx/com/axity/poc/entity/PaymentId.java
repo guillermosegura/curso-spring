@@ -22,6 +22,21 @@ public class PaymentId implements Serializable
   @Column(name = "checkNumber", nullable = false)
   private String checkNumber;
 
+  @Override
+  public boolean equals( Object object )
+  {
+    boolean isEquals = false;
+    if (this == object){
+      isEquals = true;
+    } else if (object != null && object.getClass().equals( this.getClass() )){
+      PaymentId that = (PaymentId) object;
+      
+      isEquals = this.customerNumber.equals( that.checkNumber );
+     // Objects.is      
+    }
+    return isEquals;
+  }
+
   /**
    * Constructor default
    */

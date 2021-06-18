@@ -1,4 +1,8 @@
-package mx.com.axity.patrones.templatemethod;
+package mx.com.axity.patrones.templatemethod.main;
+
+import mx.com.axity.patrones.templatemethod.AbstractSocialNetwork;
+import mx.com.axity.patrones.templatemethod.Facebook;
+import mx.com.axity.patrones.templatemethod.Twitter;
 
 public class Main
 {
@@ -8,6 +12,8 @@ public class Main
     String username = "username";
     String password = "password";
     AbstractSocialNetwork sn = new Facebook( username, password );
+     
+
     sn.post( "qwerty" );
 
     System.out.println( "================================================" );

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 
 import mx.com.axity.poc.dao.CustomerDAO;
 import mx.com.axity.poc.entity.CustomerDO;
@@ -27,29 +29,51 @@ public class CustomerDAOImpl implements CustomerDAO
   @Override
   public List<CustomerDO> findAll()
   {
-    // TODO Auto-generated method stub
-    return null;
+    String query = "SELECT o FROM CustomerDO o";
+    TypedQuery<CustomerDO> typedQuery = em.createQuery( query, CustomerDO.class );
+    return typedQuery.getResultList();
   }
 
   @Override
   public List<CustomerDO> findByCustomerName( String customerName )
   {
-    // TODO Auto-generated method stub
-    return null;
+    String query = "SELECT o FROM CustomerDO o"
+        + " WHERE LOWER(o.customerName) LIKE LOWER(CONCAT('%', :customerName,'%'))";
+    TypedQuery<CustomerDO> typedQuery = em.createQuery( query, CustomerDO.class );
+    typedQuery.setParameter( "customerName", customerName );
+    return typedQuery.getResultList();
   }
 
   @Override
   public List<CustomerDO> findBySalesRepEmployee( Long employeeNumber )
   {
-    // TODO Auto-generated method stub
-    return null;
+    String query = "SELECT o FROM CustomerDO o" + " WHERE o.salesRepEmployee.employeeNumber = :employeeNumber";
+    TypedQuery<CustomerDO> typedQuery = em.createQuery( query, CustomerDO.class );
+    typedQuery.setParameter( "employeeNumber", employeeNumber );
+    return typedQuery.getResultList();
   }
 
   @Override
   public CustomerDO get( Long customerNumber )
   {
-    // TODO Auto-generated method stub
-    return null;
+    String query = "SELECT o FROM CustomerDO o" 
+   + " WHERE o.customerNumber = :customerNumber";
+
+    TypedQuery<CustomerDO> typedQuery = em.createQuery( query, CustomerDO.class );
+    typedQuery.setParameter( "customerNumber", customerNumber );
+
+    CustomerDO customer;
+    try
+    {
+      customer = typedQuery.getSingleResult();
+    }
+    catch( PersistenceException e )
+    {
+      LOG.error( e.getMessage() );
+      customer = null;
+    }
+
+    return customer;
   }
 
   @Override

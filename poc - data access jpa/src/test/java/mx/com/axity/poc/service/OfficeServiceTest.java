@@ -45,7 +45,7 @@ public class OfficeServiceTest
 
     Assert.assertNotNull( offices );
     Assert.assertFalse( offices.isEmpty() );
-    
+
     for( Office office : offices )
     {
       LOG.info( "{}", office );
@@ -62,31 +62,71 @@ public class OfficeServiceTest
 
     Assert.assertNotNull( offices );
     Assert.assertTrue( offices.isEmpty() );
-    
+
   }
-  
+
   @Test
   public void testGet()
   {
-    fail( "Not yet implemented" );
+    Office office = officeService.get( "1" );
+    Assert.assertNotNull( office );
+
   }
 
   @Test
   public void testCreate()
   {
-    fail( "Not yet implemented" );
+    Assert.assertNull( this.officeService.get( "10" ) );
+    Office office = new Office();
+    office.setOfficeCode( "10" );
+    office.setCity( "CDMX" );
+    office.setPhone( "+52 55 50 46 92 00" );
+    office.setAddressLine1( "Av Ejército Nacional 350," );
+    office.setAddressLine2( "piso 5 Polanco V Sección" );
+    office.setState( "CDMX" );
+    office.setCountry( "México" );
+    office.setPostalCode( "11560" );
+    office.setTerritory( "LATAM" );
+
+    officeService.create( office );
+    Assert.assertNotNull( this.officeService.get( "10" ) );
+    
   }
 
   @Test
   public void testEdit()
   {
-    fail( "Not yet implemented" );
+    Office office = this.officeService.get( "1" );
+    String myCity = "My City";
+    office.setCity( myCity  );
+    
+    this.officeService.edit( office );
+    
+    Assert.assertEquals( myCity, this.officeService.get( "1" ).getCity() );
+    
   }
 
   @Test
   public void testDelete()
   {
-    fail( "Not yet implemented" );
+    Office office = new Office();
+    office.setOfficeCode( "11" );
+    office.setCity( "CDMX" );
+    office.setPhone( "+52 55 50 46 92 00" );
+    office.setAddressLine1( "Av Ejército Nacional 350," );
+    office.setAddressLine2( "piso 5 Polanco V Sección" );
+    office.setState( "CDMX" );
+    office.setCountry( "México" );
+    office.setPostalCode( "11560" );
+    office.setTerritory( "LATAM" );
+
+    officeService.create( office );
+    Assert.assertNotNull( this.officeService.get( "11" ) ); 
+    
+    officeService.delete( "11" );
+    
+    Assert.assertNull( this.officeService.get( "11" ) ); 
+    
   }
 
 }
