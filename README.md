@@ -7,6 +7,8 @@ Ejemplos de Acoplamiento
 - [POC 1](01-acoplamiento/poc)
 - [POC 2](01-acoplamiento/poc2)
 
+Spring Framework
+- [Inyección de dependencias](02-spring/poc3)
 
 #### Requisitos:
 - Java 11 [Open JDK11](https://jdk.java.net/java-se-ri/11)
