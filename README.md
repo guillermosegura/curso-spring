@@ -4,8 +4,8 @@ Pruebas de concepto de spring
 #### Contenido
 
 Ejemplos de Acoplamiento
-- [POC 1](01-acoplamiento/poc/README.md)
-- [POC 2](01-acoplamiento/poc2/README.md)
+- [POC 1](01-acoplamiento/poc)
+- [POC 2](01-acoplamiento/poc2)
 
 
 #### Requisitos:
