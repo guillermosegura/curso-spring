@@ -1,12 +1,14 @@
 # Curso Spring
 Pruebas de concepto de spring
 
-
-Versión de Java jdk11
-Versión de Spring 5.3.21
-
 #### Contenido
 
 Ejemplos de Acoplamiento
-[POC 1](01-acoplamiento/poc/README.md)
-01-acoplamiento/poc2
+- [POC 1] (01-acoplamiento/poc/README.md)
+- [POC 2] (01-acoplamiento/poc2/README.md)
+
+
+#### Requisitos:
+- Java 11 - [Open JDK11](https://jdk.java.net/java-se-ri/11)
+- Maven 3.8.1+ - [Maven](https://maven.apache.org/download.cgi)
+- Spring 5.3.21 - [Spring] (https://spring.io/projects/spring-framework)
