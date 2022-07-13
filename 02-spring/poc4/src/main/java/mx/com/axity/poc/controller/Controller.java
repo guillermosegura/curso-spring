@@ -1,12 +1,13 @@
 package mx.com.axity.poc.controller;
 
-import javax.annotation.PostConstruct;
 
-import mx.com.axity.poc.service.Service;
-import mx.com.axity.poc.to.Data;
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+
+import mx.com.axity.poc.service.Service;
+import mx.com.axity.poc.to.Data;
 
 public class Controller
 {
