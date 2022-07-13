@@ -2,6 +2,17 @@ package mx.com.axity.poc.dao;
 
 import mx.com.axity.poc.to.Data;
 
-public interface DataDAO {
-	void insert(Data data);
+/**
+ * Interface DAO
+ * 
+ * @author guillermo.segura@axity.com
+ */
+public interface DataDAO
+{
+  /**
+   * Guarda la información
+   * 
+   * @param data
+   */
+  void insert( Data data );
 }
