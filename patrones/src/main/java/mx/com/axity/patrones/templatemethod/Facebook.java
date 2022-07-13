@@ -19,7 +19,7 @@ public class Facebook extends AbstractSocialNetwork
   @Override
   protected boolean sendData( String message )
   {
-    System.out.println( "Mensaje a enviar: " + message );
+    System.out.println( "Mensaje a enviar FB: " + message );
     return true;
   }
 

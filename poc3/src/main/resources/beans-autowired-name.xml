@@ -2,14 +2,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd" >
 
   <bean id="controller" class="mx.com.axity.poc.controller.Controller"
-    autowire="byName" />
+    autowire="byName" p/>
 
   <bean id="service" name="service,myService,otroServicio"
     class="mx.com.axity.poc.service.impl.ServiceImpl" autowire="byName" />
 
-  <bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
+  <bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" >
+    <property name="">
+      <set>
+        <value>1</value>
+      </set>
+    </property>
+  </bean>
 
 </beans>

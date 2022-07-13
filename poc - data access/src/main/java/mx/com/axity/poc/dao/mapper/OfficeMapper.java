@@ -22,7 +22,7 @@ public final class OfficeMapper implements RowMapper<Office>
   public Office mapRow( ResultSet rs, int rowNum ) throws SQLException
   {
     Office office = new Office();
-    office.setOfficeCode( rs.getString( "officeCode" ) );
+    office.setOfficeCode( rs.getString( "officeCode" ) ); // 1 
     office.setCity( rs.getString( "city" ) );
     office.setPhone( rs.getString( "phone" ) );
     office.setAddressLine1( rs.getString( "addressLine1" ) );
@@ -31,6 +31,7 @@ public final class OfficeMapper implements RowMapper<Office>
     office.setCountry( rs.getString( "country" ) );
     office.setPostalCode( rs.getString( "postalCode" ) );
     office.setTerritory( rs.getString( "territory" ) );
+    
     return office;
   }
 

@@ -1,11 +1,12 @@
 package mx.com.axity.poc.dao;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
-
-import mx.com.axity.poc.entity.EmployeeDO;
-import mx.com.axity.poc.entity.OfficeDO;
+import javax.persistence.PersistenceUnit;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,6 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import mx.com.axity.poc.entity.EmployeeDO;
+import mx.com.axity.poc.entity.OfficeDO;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration({ "classpath:/beans.xml" })
@@ -29,6 +33,9 @@ public class OfficeDAOTest
 
   @Autowired
   private EmployeeDAO employeeDAO;
+
+  @PersistenceUnit
+  private EntityManagerFactory emf;
 
   @Test
   public void testFindAll()
@@ -114,6 +121,18 @@ public class OfficeDAOTest
     log( office );
   }
 
+  @Test
+  public void testEdit_officeNotFound()
+  {
+    OfficeDO office = new OfficeDO();
+    office.setOfficeCode( "99999" );
+
+    this.officeDAO.edit( office );
+
+    office = this.officeDAO.get( "99999" );
+    Assert.assertNull( office );
+  }
+
   @Test(expected = PersistenceException.class)
   public void testDelete_PersistenceException_FK_Referenced()
   {
@@ -152,6 +171,23 @@ public class OfficeDAOTest
     this.officeDAO.addEmployee( "1", employee );
   }
 
+  @Test
+  public void testAddEmployee_officeWithoutEmployees()
+      throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException
+  {
+    OfficeDO office = this.officeDAO.get( "1" );
+    office.setEmployees( null );
+
+    Field field = this.officeDAO.getClass().getDeclaredField( "em" );
+    field.setAccessible( true );
+    EntityManager em = (EntityManager) field.get( this.officeDAO );
+    em.merge( office );
+
+    EmployeeDO employee = employeeDAO.get( 1188L );
+
+    this.officeDAO.addEmployee( "1", employee );
+  }
+
   @Test(expected = RuntimeException.class)
   public void testAddEmployee_employeeAlreadyAssignedToOffice()
   {
@@ -167,22 +203,40 @@ public class OfficeDAOTest
 
     this.officeDAO.addEmployee( "9999", employee );
   }
-  
-  
+
   @Test
-  public void testRemoveEmployee(){
+  public void testRemoveEmployee()
+  {
     EmployeeDO employee = employeeDAO.get( 1188L );
     this.officeDAO.removeEmployee( "2", employee );
   }
-  
-  @Test(expected=RuntimeException.class)
-  public void testRemoveEmployee_officeNotFound(){
+
+  @Test(expected = RuntimeException.class)
+  public void testRemoveEmployee_officeWithoutEmployees()
+      throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException
+  {
+    OfficeDO office = this.officeDAO.get( "2" );
+    office.setEmployees( null );
+
+    Field field = this.officeDAO.getClass().getDeclaredField( "em" );
+    field.setAccessible( true );
+    EntityManager em = (EntityManager) field.get( this.officeDAO );
+    em.merge( office );
+
+    EmployeeDO employee = employeeDAO.get( 1188L );
+    this.officeDAO.removeEmployee( "2", employee );
+  }
+
+  @Test(expected = RuntimeException.class)
+  public void testRemoveEmployee_officeNotFound()
+  {
     EmployeeDO employee = employeeDAO.get( 1188L );
     this.officeDAO.removeEmployee( "9999", employee );
   }
-  
-  @Test(expected=RuntimeException.class)
-  public void testRemoveEmployee_employeeNotAssigned(){
+
+  @Test(expected = RuntimeException.class)
+  public void testRemoveEmployee_employeeNotAssigned()
+  {
     EmployeeDO employee = employeeDAO.get( 1188L );
     this.officeDAO.removeEmployee( "3", employee );
   }

@@ -23,8 +23,8 @@ public class InterceptAspectMain
     
     SimpleService anotherSimpleService = context.getBean( "anotherSimpleService", SimpleService.class );
     anotherSimpleService.doSomething();
-    anotherSimpleService.doSomethingElse();
-    anotherSimpleService.hello( "world!" );
+    //anotherSimpleService.doSomethingElse();
+    //anotherSimpleService.hello( "world!" );
 
   }
 

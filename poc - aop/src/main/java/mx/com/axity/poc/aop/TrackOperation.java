@@ -58,8 +58,8 @@ public class TrackOperation
   {
     if( operation != null )
     {
-      LOG.info( "After Params {} operation, values: a={},  b={}", jp.getSignature().getName(), operation.getA(),
-        operation.getB() );
+      LOG.info( "After Params {} operation, values: a={},  b={}, result={}", jp.getSignature().getName(), operation.getA(),
+        operation.getB(), operation.getResult() );
     }
 
   }

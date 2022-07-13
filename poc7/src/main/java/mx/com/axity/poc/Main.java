@@ -24,14 +24,7 @@ public class Main
     data.setLastname( "Segura" );
     controller.save( data );
 
-    try
-    {
-      int n = 1 / 0;
-    }
-    catch( RuntimeException e )
-    {
-      LOG.error( e.getMessage(), e );
-    }
+
   }
 
 }

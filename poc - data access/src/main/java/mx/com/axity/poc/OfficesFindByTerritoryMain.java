@@ -19,7 +19,7 @@ public class OfficesFindByTerritoryMain
     ApplicationContext context = new ClassPathXmlApplicationContext( "beans.xml" );
 
     OfficeService officeService = context.getBean( OfficeService.class );
-    List<Office> offices = officeService.findByTerritory( "NA" );
+    List<Office> offices = officeService.findByTerritory( "LATAM" );
 
     for( Office office : offices )
     {

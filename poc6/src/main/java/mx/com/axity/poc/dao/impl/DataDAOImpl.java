@@ -22,20 +22,20 @@ public class DataDAOImpl implements DataDAO
     sb.append( "'" ).append( data.getLastname() ).append( "');" );
     LOG.info( sb.toString() );
     
-    try
-    {
-     URL url = new URL( "ahtml;//www.google.com" ); 
-    }
-    catch( RuntimeException e )
-    {
-      LOG.error( e.getMessage(), e );
-    }
-    catch( MalformedURLException e )
-    {
-      // TODO Auto-generated catch block
-      //e.printStackTrace();
-      LOG.error( e.getMessage(), e );
-    }
+//    try
+//    {
+//     URL url = new URL( "ahtml;//www.google.com" ); 
+//    }
+//    catch( RuntimeException e )
+//    {
+//      LOG.error( e.getMessage(), e );
+//    }
+//    catch( MalformedURLException e )
+//    {
+//      // TODO Auto-generated catch block
+//      //e.printStackTrace();
+//      LOG.error( e.getMessage(), e );
+//    }
   }
 
 }

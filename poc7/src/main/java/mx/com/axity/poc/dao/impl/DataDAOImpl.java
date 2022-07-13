@@ -19,6 +19,16 @@ public class DataDAOImpl implements DataDAO
     sb.append( "'" ).append( data.getName() ).append( "'," );
     sb.append( "'" ).append( data.getLastname() ).append( "');" );
     LOG.debug( sb.toString() );
+    
+    
+    try
+    {
+      int n = 1 / 0;
+    }
+    catch( RuntimeException e )
+    {
+      LOG.error( e.getMessage(), e );
+    }
   }
 
 }

@@ -22,7 +22,8 @@ public class OfficeDAOImpl implements OfficeDAO
       + " addressLine2, state, country, postalCode, territory " //
       + " FROM offices ORDER BY officeCode";
 
-  private static final String QUERY_FIND_BY_TERRITORY = "SELECT officeCode, city, phone, addressLine1,"
+  private static final String QUERY_FIND_BY_TERRITORY = 
+      "SELECT officeCode, city, phone, addressLine1,"
       + " addressLine2, state, country, postalCode, territory " //
       + " FROM offices"//
       + " WHERE territory = ?" //

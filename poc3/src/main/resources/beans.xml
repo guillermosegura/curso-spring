@@ -12,6 +12,6 @@
 		<property name="dataDAO" ref="dataDAO" />
 	</bean>
 
-	<bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
+	<bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOPro" />
 
 </beans>

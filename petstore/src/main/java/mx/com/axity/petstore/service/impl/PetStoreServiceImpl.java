@@ -15,6 +15,26 @@ public class PetStoreServiceImpl implements PetStoreService
   private ItemDao itemDao;
   private AccountDao accountDao;
 
+  public PetStoreServiceImpl()
+  {
+    System.out.println( "Constructor PetStoreServiceImpl" );
+  }
+
+  public PetStoreServiceImpl( int n )
+  {
+    System.out.println( "Constructor PetStoreServiceImpl: " + n );
+  }
+
+  public PetStoreServiceImpl( A a )
+  {
+    System.out.println( "Constructor PetStoreServiceImpl: " + a.getId() );
+  }
+
+  public void init()
+  {
+    System.out.println( "Se ha creado el Bean, iniciando..." );
+  }
+
   @Override
   public List<String> getUsernameList()
   {

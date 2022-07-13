@@ -20,7 +20,7 @@ public class OfficesDeleteMain
 
     OfficeService officeService = context.getBean( OfficeService.class );
 
-    officeService.delete( "8" );
+    officeService.delete( "9" );
 
     LOG.info( "{}", officeService.get( "9" ) );
   }

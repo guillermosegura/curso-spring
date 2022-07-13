@@ -22,13 +22,14 @@ public class AroundAspectMain
 
     Operation op = OperationFactory.divide( 1, 0 );
     // op.setB( null );
-    op = arithmeticController.execute( op );
+    //op = arithmeticController.execute( op );
     // op = OperationFactory.add( 2, 4 );
     // op = arithmeticController.execute( op );
     // op = OperationFactory.add( 4, 5 );
     // op = arithmeticController.execute( op );
-    // op = OperationFactory.add( 6, 6 );
-    // op = arithmeticController.execute( op );
+     op = OperationFactory.add( 6, 6 );
+     op.setA( null );
+     op = arithmeticController.execute( op );
 
     LOG.info( "{}", op );
   }

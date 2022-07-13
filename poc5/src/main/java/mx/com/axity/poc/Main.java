@@ -29,7 +29,7 @@ public class Main
     Data otraData = context.getBean( "otraData", Data.class );
     LOG.info( otraData );
 
-    data = null;
+//    data = null;
 
     try
     {

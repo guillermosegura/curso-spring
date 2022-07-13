@@ -2,16 +2,17 @@ package mx.com.axity.poc.dao;
 
 import java.util.List;
 
-import mx.com.axity.poc.entity.CustomerDO;
-import mx.com.axity.poc.entity.EmployeeDO;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import mx.com.axity.poc.entity.CustomerDO;
+import mx.com.axity.poc.entity.EmployeeDO;
 
 /**
  * Pruebas unitarias de la interfaz {@link mx.com.axity.poc.dao.CustomerDAO}
@@ -104,19 +105,27 @@ public class CustomerDAOTest
   @Test
   public void testEdit()
   {
-    CustomerDO customer = this.customerDAO.get( 125L );
+    CustomerDO entity = this.customerDAO.get( 125L );
+    CustomerDO customer = new CustomerDO();   
+    BeanUtils.copyProperties( entity, customer );
+        
+    
+    System.out.println( customer.getCity() );
+    customer.setCity( "ABC" );
 
+    
     EmployeeDO salesRepEmployee = this.employeeDAO.get( 1165L );
 
     customer.setSalesRepEmployee( salesRepEmployee );
 
     this.customerDAO.edit( customer );
 
-    customer = this.customerDAO.get( 125L );
-    Assert.assertNotNull( customer );
-    Assert.assertNotNull( customer.getSalesRepEmployee() );
-    Assert.assertEquals( 1165L, customer.getSalesRepEmployee().getEmployeeNumber().longValue() );
-
+    CustomerDO customerOther = this.customerDAO.get( 125L );
+    System.out.println( "---->"+customerOther.getCity() );
+    Assert.assertNotNull( customerOther );
+    Assert.assertNotNull( customerOther.getSalesRepEmployee() );
+    Assert.assertEquals( 1165L, customerOther.getSalesRepEmployee().getEmployeeNumber().longValue() );
+    Assert.assertEquals( "ABC", customerOther.getCity() );
   }
 
   @Test

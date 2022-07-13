@@ -123,6 +123,7 @@ public class OfficeDAOImpl implements OfficeDAO
     OfficeDO entity = this.get( officeCode );
     if( entity != null )
     {
+      
       if( entity.getEmployees() == null )
       {
         entity.setEmployees( new ArrayList<EmployeeDO>() );

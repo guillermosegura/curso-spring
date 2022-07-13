@@ -56,8 +56,7 @@ public class CustomerDAOImpl implements CustomerDAO
   @Override
   public CustomerDO get( Long customerNumber )
   {
-    String query = "SELECT o FROM CustomerDO o" 
-   + " WHERE o.customerNumber = :customerNumber";
+    String query = "SELECT o FROM CustomerDO o" + " WHERE o.customerNumber = :customerNumber";
 
     TypedQuery<CustomerDO> typedQuery = em.createQuery( query, CustomerDO.class );
     typedQuery.setParameter( "customerNumber", customerNumber );
@@ -87,7 +86,7 @@ public class CustomerDAOImpl implements CustomerDAO
   public void edit( CustomerDO customer )
   {
     // TODO Auto-generated method stub
-
+    this.em.flush();
   }
 
   @Override
