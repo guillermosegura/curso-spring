@@ -8,6 +8,8 @@
    
 2. Inyección por constructor
    - [beans-constructor-wiring.xml](src/main/resources/beans-constructor-wiring.xml)
+   - [beans-constructor-wiring2.xml](src/main/resources/beans-constructor-wiring2.xml)
+   - [beans-constructor-wiring3.xml](src/main/resources/beans-constructor-wiring3.xml)
    
 3. Inyección por nombre
    - [beans-autowired-name.xml](src/main/resources/beans-autowired-name.xml)
