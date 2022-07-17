@@ -2,17 +2,17 @@ package mx.com.axity.poc.dao.impl;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Repository;
+
 import mx.com.axity.poc.dao.DataDAO;
 import mx.com.axity.poc.to.Data;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.impl.SimpleLog;
-import org.springframework.stereotype.Repository;
 
 @Repository
 public class DataDAOImpl implements DataDAO
 {
-  private static final Log LOG = new SimpleLog( DataDAOImpl.class.getCanonicalName() );
+  private static final Log LOG = LogFactory.getLog( DataDAOImpl.class.getCanonicalName() );
 
   public DataDAOImpl()
   {

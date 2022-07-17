@@ -1,16 +1,16 @@
 package mx.com.axity.poc;
 
-import mx.com.axity.poc.controller.Controller;
-import mx.com.axity.poc.to.Data;
-
 import org.apache.commons.logging.Log;
-import org.apache.commons.logging.impl.SimpleLog;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import mx.com.axity.poc.controller.Controller;
+import mx.com.axity.poc.to.Data;
+
 public class Main
 {
-  private static final Log LOG = new SimpleLog( "Main" );
+  private static final Log LOG = LogFactory.getLog( "Main" );
 
   public static void main( String[] args )
   {

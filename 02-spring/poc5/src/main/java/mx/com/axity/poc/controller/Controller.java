@@ -2,20 +2,20 @@ package mx.com.axity.poc.controller;
 
 import javax.annotation.PostConstruct;
 
-import mx.com.axity.poc.service.Service;
-import mx.com.axity.poc.to.Data;
-
 import org.apache.commons.logging.Log;
-import org.apache.commons.logging.impl.SimpleLog;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import mx.com.axity.poc.service.Service;
+import mx.com.axity.poc.to.Data;
 
 @Component
 public class Controller
 {
 
-  private static final Log LOG = new SimpleLog( "Controller" );
+  private static final Log LOG = LogFactory.getLog( "Controller" );
 
   @Autowired
   private Service service;
