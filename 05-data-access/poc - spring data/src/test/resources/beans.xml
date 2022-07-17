@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop 
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/jdbc
+        http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa
+        https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+  <context:annotation-config />
+
+  <!-- Services -->
+  <bean name="officeService" class="mx.com.axity.poc.service.impl.OfficeServiceImpl" />
+  <bean name="employeeService" class="mx.com.axity.poc.service.impl.EmployeeServiceImpl" />
+  <bean name="customerService" class="mx.com.axity.poc.service.impl.CustomerServiceImpl"/>
+
+  <!-- Repositorios  -->
+  <jpa:repositories base-package="mx.com.axity.poc.persistence"></jpa:repositories>
+
+  <jdbc:embedded-database id="dataSource" type="H2">
+    <jdbc:script location="classpath:schema.sql" />
+    <jdbc:script location="classpath:data.sql" />
+  </jdbc:embedded-database>
+
+
+  <tx:annotation-driven transaction-manager="transactionManager" />
+
+  <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory" />
+  </bean>
+
+
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="get*" read-only="true" />
+      <tx:method name="find*" read-only="true" />
+      <tx:method name="*" />
+    </tx:attributes>
+  </tx:advice>
+
+  <aop:config>
+    <aop:pointcut id="serviceOperation" expression="execution(* mx.com.axity.poc.service.*.*(..))" />
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
+  </aop:config>
+
+
+
+
+  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <property name="packagesToScan" value="mx.com.axity.poc.entity" />
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+    </property>
+    <property name="loadTimeWeaver">
+      <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+    </property>
+  </bean>
+
+
+
+
+</beans>
