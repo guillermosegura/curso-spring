@@ -39,9 +39,9 @@
       <tr>
         <th scope="col">C&oacute;digo</th>
         <th scope="col">Ciudad</th>
-        <th scope="col">Teléfono</th>
-        <th scope="col">Dirección 1</th>
-        <th scope="col">Dirección 2</th>
+        <th scope="col">Tel&eacute;fono</th>
+        <th scope="col">Direcci&oacute;n 1</th>
+        <th scope="col">Direcci&oacute;n 2</th>
         <th scope="col">State</th>
         <th scope="col">Country</th>
         <th scope="col">CP</th>

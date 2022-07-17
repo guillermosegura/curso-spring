@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,7 @@ import com.axity.springmvc.util.Validator;
  * @author guillermo.segura@axity.com
  */
 @RestController
+@RequestMapping("/api/offices")
 public class OfficeRestController
 {
 
@@ -39,7 +41,7 @@ public class OfficeRestController
    * 
    * @return
    */
-  @GetMapping(path = "/api/office", produces = MediaType.APPLICATION_JSON_VALUE)
+  @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> getOffices( @RequestParam(required = false, defaultValue = "0") int page,
       @RequestParam(required = false, defaultValue = "20") int pageSize )
@@ -48,7 +50,7 @@ public class OfficeRestController
     return new ResponseEntity<>( offices, HttpStatus.OK );
   }
 
-  @GetMapping(path = "/api/office/{officeCode}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @GetMapping(path = "/{officeCode}", produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> findOfficeById( @PathVariable("officeCode") String officeCode )
   {
@@ -71,7 +73,7 @@ public class OfficeRestController
    * @param office
    * @return
    */
-  @PostMapping(path = "/api/office", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> create( @RequestBody Office office )
   {
@@ -96,7 +98,7 @@ public class OfficeRestController
    * @param officeCode
    * @return
    */
-  @PutMapping(value = "/api/office/{officeCode}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  @PutMapping(value = "/{officeCode}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> edit( @RequestBody Office office, @PathVariable("officeCode") String officeCode )
   {
@@ -120,7 +122,7 @@ public class OfficeRestController
    * @param officeCode
    * @return
    */
-  @DeleteMapping(value = "/api/office/{officeCode}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @DeleteMapping(value = "/{officeCode}", produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> delete( @PathVariable("officeCode") String officeCode )
   {
