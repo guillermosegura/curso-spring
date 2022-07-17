@@ -2,7 +2,7 @@
 
 #### Inyección de dependencias
 
-1. Inyección por anotaciones
+1. Inyección por anotaciones con Anotaciones
    - [beans.xml](src/main/resources/beans.xml)
   
 #### Requisitos:

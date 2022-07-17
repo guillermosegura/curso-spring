@@ -4,9 +4,8 @@
   <groupId>mx.com.axity</groupId>
   <artifactId>poc8</artifactId>
   <version>1.0.0</version>
-  <name>POC con Spring</name>
-  <description>POC con Spring</description>
-
+  <name>POC con Spring - Logging</name>
+  <description>Spring + SLF4j</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

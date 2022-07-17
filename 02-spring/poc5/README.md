@@ -1,6 +1,6 @@
 ## Spring Framework
 
-#### Inyección de dependencias
+#### Inyección de dependencias Configuración Java
 
 1. Inyección por Configuración Java
    - [AppConfig.java](src/main/java/mx/com/axity/poc/AppConfig.java)

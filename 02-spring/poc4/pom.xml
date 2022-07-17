@@ -4,8 +4,8 @@
   <groupId>mx.com.axity</groupId>
   <artifactId>poc4</artifactId>
   <version>1.0.0</version>
-  <name>POC con Spring</name>
-  <description>POC con Spring</description>
+  <name>POC con Spring - Beans</name>
+  <description>Inyección por anotaciones con Anotaciones</description>
 
 
   <properties>

@@ -1,6 +1,6 @@
 ## Spring Framework
 
-#### Inyección de dependencias
+#### Inyección de dependencias con XML
 
 1. Inyección por propiedad
    - [beans.xml](src/main/resources/beans.xml)

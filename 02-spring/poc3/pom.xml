@@ -5,7 +5,7 @@
   <artifactId>poc3</artifactId>
   <version>1.0.0</version>
   <name>POC con Spring - Beans</name>
-  <description>POC con Spring - Beans</description>
+  <description>Inyección de dependencias XML</description>
 
 
   <properties>
