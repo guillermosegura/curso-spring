@@ -1,0 +1,374 @@
+openapi: 3.0.1
+info:
+  title: Api WS Offices
+  description: Api para información de Oficinas
+  contact:
+    name: Axity
+    url: https://axity.com/
+  version: v1
+servers:
+  - url: http://localhost:8080/poc/api/
+    description: Ambiente local
+paths:
+  /offices:
+    get:
+      summary: Consulta de oficinas
+      description: 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce scelerisque imperdiet sem, sed fringilla metus fermentum sed. Sed fermentum pulvinar cursus. Praesent ac dapibus dolor. Pellentesque ac fermentum erat, sed hendrerit nulla. Suspendisse auctor nibh porta, mattis odio quis, hendrerit mauris. Nullam a ipsum velit. Nulla bibendum cursus metus a suscipit. Sed mollis quam augue, at elementum lacus malesuada vel. Nulla euismod tempus lorem, et mollis dolor varius vehicula. Morbi et nulla tempor, tincidunt tellus et, lobortis sapien. Aenean porta, elit vel tristique ornare, dui diam elementum nibh, non fermentum libero dui nec velit. Praesent scelerisque vulputate commodo. Pellentesque convallis sit amet est nec ornare. Sed semper elementum accumsan. Proin fermentum mauris quis elit semper ultricies.
+      tags:
+        - API Offices
+      responses:
+         '200':
+           description: Success
+           content:
+             application/json:
+               schema:
+                 $ref: '#/components/schemas/PaginatedHeaderOfficeResponse'
+               examples:
+                 Ok:
+                   summary: Ejemplo de petición de Consulta
+                   value:
+                    {
+                        "header": {
+                            "status": "000",
+                            "message": "OK"
+                        },
+                        "body": {
+                            "page": 0,
+                            "pageSize": 20,
+                            "pages": 1,
+                            "response": [
+                                {
+                                    "officeId": "1",
+                                    "territory": "NA",
+                                    "country": "USA",
+                                    "city": "San Francisco",
+                                    "state": "CA",
+                                    "addressLine1": "100 Market Street",
+                                    "addressLine2": "Suite 300",
+                                    "phone": "+1 650 219 4782",
+                                    "zip": "94080"
+                                },
+                                {
+                                    "officeId": "2",
+                                    "territory": "NA",
+                                    "country": "USA",
+                                    "city": "Boston",
+                                    "state": "MA",
+                                    "addressLine1": "1550 Court Place",
+                                    "addressLine2": "Suite 102",
+                                    "phone": "+1 215 837 0825",
+                                    "zip": "02107"
+                                },
+                                {
+                                    "officeId": "3",
+                                    "territory": "NA",
+                                    "country": "USA",
+                                    "city": "NYC",
+                                    "state": "NY",
+                                    "addressLine1": "523 East 53rd Street",
+                                    "addressLine2": "apt. 5A",
+                                    "phone": "+1 212 555 3000",
+                                    "zip": "10022"
+                                },
+                                {
+                                    "officeId": "4",
+                                    "territory": "EMEA",
+                                    "country": "France",
+                                    "city": "Paris",
+                                    "addressLine1": "43 Rue Jouffroy D'abbans",
+                                    "phone": "+33 14 723 4404",
+                                    "zip": "75017"
+                                },
+                                {
+                                    "officeId": "5",
+                                    "territory": "Japan",
+                                    "country": "Japan",
+                                    "city": "Tokyo",
+                                    "state": "Chiyoda-Ku",
+                                    "addressLine1": "4-1 Kioicho",
+                                    "phone": "+81 33 224 5000",
+                                    "zip": "102-8578"
+                                },
+                                {
+                                    "officeId": "6",
+                                    "territory": "APAC",
+                                    "country": "Australia",
+                                    "city": "Sydney",
+                                    "addressLine1": "5-11 Wentworth Avenue",
+                                    "addressLine2": "Floor #2",
+                                    "phone": "+61 2 9264 2451",
+                                    "zip": "NSW 2010"
+                                },
+                                {
+                                    "officeId": "7",
+                                    "territory": "EMEA",
+                                    "country": "UK",
+                                    "city": "London",
+                                    "addressLine1": "25 Old Broad Street",
+                                    "addressLine2": "Level 7",
+                                    "phone": "+44 20 7877 2041",
+                                    "zip": "EC2N 1HN"
+                                }
+                            ]
+                        }
+                    }
+    post:
+      summary: Crear oficina
+      description: 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce scelerisque imperdiet sem, sed fringilla metus fermentum sed. Sed fermentum pulvinar cursus. Praesent ac dapibus dolor. Pellentesque ac fermentum erat, sed hendrerit nulla. Suspendisse auctor nibh porta, mattis odio quis, hendrerit mauris. Nullam a ipsum velit. Nulla bibendum cursus metus a suscipit. Sed mollis quam augue, at elementum lacus malesuada vel. Nulla euismod tempus lorem, et mollis dolor varius vehicula. Morbi et nulla tempor, tincidunt tellus et, lobortis sapien. Aenean porta, elit vel tristique ornare, dui diam elementum nibh, non fermentum libero dui nec velit. Praesent scelerisque vulputate commodo. Pellentesque convallis sit amet est nec ornare. Sed semper elementum accumsan. Proin fermentum mauris quis elit semper ultricies.
+      tags:
+        - API Offices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfficeDTO'
+               
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfficeResponse'
+              examples:
+                Ok:
+                  summary: Ok
+                  value:
+                    {
+                      "header": {
+                        "status": "000",
+                        "message": "OK"
+                      },
+                      "body": {
+                        "officeId": "9",
+                        "territory": "NA",
+                        "country": "USA",
+                        "city": "San Francisco",
+                        "state": "CA",
+                        "addressLine1": "100 Market Street",
+                        "addressLine2": "Suite 300",
+                        "phone": "+1 650 219 4782",
+                        "zip": "94080"
+                      }
+                    }
+        '500':
+          description: Error already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeaderResponse'
+              examples:
+                Error:
+                  summary: Error
+                  value:
+                    {
+                      "header": {
+                        "status": "002",
+                        "message": "Ocurrió un error de persistencia "
+                      }
+                    }
+  /offices/{officeCode}:
+    get:
+      summary: Consultar oficina por officeCode
+      description: 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce scelerisque imperdiet sem, sed fringilla metus fermentum sed. Sed fermentum pulvinar cursus. Praesent ac dapibus dolor. Pellentesque ac fermentum erat, sed hendrerit nulla. Suspendisse auctor nibh porta, mattis odio quis, hendrerit mauris. Nullam a ipsum velit. Nulla bibendum cursus metus a suscipit. Sed mollis quam augue, at elementum lacus malesuada vel. Nulla euismod tempus lorem, et mollis dolor varius vehicula. Morbi et nulla tempor, tincidunt tellus et, lobortis sapien. Aenean porta, elit vel tristique ornare, dui diam elementum nibh, non fermentum libero dui nec velit. Praesent scelerisque vulputate commodo. Pellentesque convallis sit amet est nec ornare. Sed semper elementum accumsan. Proin fermentum mauris quis elit semper ultricies.
+      tags:
+        - API Offices
+      parameters:
+        - name: officeCode
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+         '200':
+           description: Success
+           content:
+             application/json:
+               schema:
+                 $ref: '#/components/schemas/OfficeResponse'
+               examples:
+                 Ok:
+                   summary: Ejemplo de petición de Consulta
+                   value:
+                    {
+                      "header": {
+                        "status": "000",
+                        "message": "OK"
+                      },
+                      "body": {
+                        "officeId": "1",
+                        "territory": "NA",
+                        "country": "San Francisco UPDATED",
+                        "city": "San Francisco UPDATED",
+                        "state": "CA",
+                        "addressLine1": "100 Market Street",
+                        "addressLine2": "Suite 300",
+                        "phone": "+1 650 219 4782",
+                        "zip": "94080"
+                      }
+                    }
+         '204':
+           description: No existe la oficina
+    put:
+      summary: Actualizar oficina
+      description: 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce scelerisque imperdiet sem, sed fringilla metus fermentum sed. Sed fermentum pulvinar cursus. Praesent ac dapibus dolor. Pellentesque ac fermentum erat, sed hendrerit nulla. Suspendisse auctor nibh porta, mattis odio quis, hendrerit mauris. Nullam a ipsum velit. Nulla bibendum cursus metus a suscipit. Sed mollis quam augue, at elementum lacus malesuada vel. Nulla euismod tempus lorem, et mollis dolor varius vehicula. Morbi et nulla tempor, tincidunt tellus et, lobortis sapien. Aenean porta, elit vel tristique ornare, dui diam elementum nibh, non fermentum libero dui nec velit. Praesent scelerisque vulputate commodo. Pellentesque convallis sit amet est nec ornare. Sed semper elementum accumsan. Proin fermentum mauris quis elit semper ultricies.
+      tags:
+        - API Offices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfficeDTO'
+      responses:
+         '200':
+           description: Success
+           content:
+             application/json:
+               schema:
+                 $ref: '#/components/schemas/PaginatedHeaderOfficeResponse'
+               examples:
+                 Ok:
+                   summary: Ejemplo de petición de Consulta
+                   value:
+                    {
+                      "header": {
+                        "status": "000",
+                        "message": "OK"
+                      },
+                      "body": {
+                        "officeId": "1",
+                        "territory": "NA",
+                        "country": "San Francisco UPDATED",
+                        "city": "San Francisco UPDATED",
+                        "state": "CA",
+                        "addressLine1": "100 Market Street",
+                        "addressLine2": "Suite 300",
+                        "phone": "+1 650 219 4782",
+                        "zip": "94080"
+                      }
+                    }
+    delete:
+      summary: Eliminar oficina
+      description: 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce scelerisque imperdiet sem, sed fringilla metus fermentum sed. Sed fermentum pulvinar cursus. Praesent ac dapibus dolor. Pellentesque ac fermentum erat, sed hendrerit nulla. Suspendisse auctor nibh porta, mattis odio quis, hendrerit mauris. Nullam a ipsum velit. Nulla bibendum cursus metus a suscipit. Sed mollis quam augue, at elementum lacus malesuada vel. Nulla euismod tempus lorem, et mollis dolor varius vehicula. Morbi et nulla tempor, tincidunt tellus et, lobortis sapien. Aenean porta, elit vel tristique ornare, dui diam elementum nibh, non fermentum libero dui nec velit. Praesent scelerisque vulputate commodo. Pellentesque convallis sit amet est nec ornare. Sed semper elementum accumsan. Proin fermentum mauris quis elit semper ultricies.
+      tags:
+        - API Offices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HeaderResponse'
+      responses:
+         '200':
+           description: Success
+           content:
+             application/json:
+               schema:
+                 $ref: '#/components/schemas/PaginatedHeaderOfficeResponse'
+               examples:
+                 Ok:
+                   summary: Ok
+                   value:
+                    {
+                      "status": "000",
+                      "message": "OK"
+                    }
+components:
+  schemas:
+    PaginatedHeaderOfficeResponse:
+      type: object
+      properties:
+        header:
+          $ref: '#/components/schemas/HeaderResponse'
+        body:
+          $ref: '#/components/schemas/PaginatedOfficeDTO'
+    PaginatedOfficeDTO:
+      type: object
+      properties:
+        page:
+          type: integer
+          nullable: false
+          example: 0
+        pageSize:
+          type: integer
+          nullable: false
+          example: 20
+        pages:
+          type: integer
+          nullable: false
+          example: 1
+        response:
+          type: array
+          nullable: false
+          items:
+            $ref: '#/components/schemas/OfficeDTO'
+    HeaderResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          nullable: false
+          example: "000"
+        message:
+          type: string
+          nullable: false
+          example: "OK"
+    OfficeResponse:
+      type: object
+      properties:
+        header:
+          $ref: '#/components/schemas/HeaderResponse'
+        body:
+          $ref: '#/components/schemas/OfficeDTO'
+    OfficeDTO:
+      properties:
+        officeId:
+          type: string
+          nullable: false
+          maxLength: 10
+          example: "1"
+        territory:
+          type: string
+          nullable: false
+          maxLength: 50
+          example: "NA"
+        country:
+          type: string
+          nullable: false
+          maxLength: 50
+          example: "USA"
+        city:
+          type: string
+          nullable: false
+          maxLength: 50
+          example: "San Francisco"
+        state:
+          type: string
+          nullable: false
+          maxLength: 50
+          example: "CA"
+        addressLine1:
+          type: string
+          nullable: false
+          maxLength: 50
+          example: "100 Market Street"
+        addressLine2:
+          type: string
+          nullable: false
+          maxLength: 50
+          example: "Suite 300"
+        phone:
+          type: string
+          nullable: false
+          maxLength: 50
+          example: "+1 650 219 4782"
+        zip:
+          type: string
+          nullable: false
+          maxLength: 15
+          example: "94080"
+
