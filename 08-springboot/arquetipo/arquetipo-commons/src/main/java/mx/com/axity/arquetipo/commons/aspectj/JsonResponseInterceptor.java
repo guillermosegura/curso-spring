@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * @author guillermo.segura@axity.com
  */
 @Retention(RUNTIME)
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 public @interface JsonResponseInterceptor
 {
 }

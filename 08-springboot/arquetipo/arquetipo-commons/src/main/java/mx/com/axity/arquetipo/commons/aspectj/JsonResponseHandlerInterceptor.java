@@ -43,6 +43,7 @@ public class JsonResponseHandlerInterceptor implements HandlerInterceptor
     Object result = null;
     try
     {
+      LOG.debug( "{}", pjp.toLongString() );
       result = pjp.proceed();
     }
     catch( BusinessException e )
