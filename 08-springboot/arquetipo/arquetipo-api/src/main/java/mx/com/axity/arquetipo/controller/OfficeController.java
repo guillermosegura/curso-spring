@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
 import mx.com.axity.arquetipo.commons.aspectj.JsonResponseInterceptor;
 import mx.com.axity.arquetipo.commons.dto.OfficeDto;
 import mx.com.axity.arquetipo.commons.request.PaginatedRequestDto;
@@ -42,6 +43,7 @@ public class OfficeController
    */
   @JsonResponseInterceptor
   @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+  @Operation(tags = "Offices", summary = "Consulta las oficinas")
   public ResponseEntity<PaginatedResponseDto<OfficeDto>> findOffices(
       @RequestParam(name = "limit", defaultValue = "50", required = false) int limit,
       @RequestParam(name = "offset", defaultValue = "0", required = false) int offset )
@@ -58,6 +60,7 @@ public class OfficeController
    */
   @JsonResponseInterceptor
   @GetMapping(path = "/{officeCode}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @Operation(tags = "Offices", description = "Consulta la oficina por el officeCode", summary = "Consulta la oficina por el officeCode")
   public ResponseEntity<GenericResponseDto<OfficeDto>> findOffice( @PathVariable("officeCode") String officeCode )
   {
     var result = this.officeFacade.find( officeCode );
@@ -77,6 +80,7 @@ public class OfficeController
    */
   @JsonResponseInterceptor
   @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  @Operation(tags = "Offices", description = "Crea una oficina", summary = "Crea una oficina")
   public ResponseEntity<GenericResponseDto<OfficeDto>> create( @RequestBody OfficeDto office )
   {
     var result = this.officeFacade.create( office );
@@ -92,6 +96,7 @@ public class OfficeController
    */
   @JsonResponseInterceptor
   @PutMapping(path = "/{officeCode}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  @Operation(tags = "Offices", description = "Edita una oficina", summary = "Edita una oficina")
   public ResponseEntity<GenericResponseDto<Boolean>> update( @PathVariable("officeCode") String officeCode,
       @RequestBody OfficeDto office )
   {
@@ -108,6 +113,7 @@ public class OfficeController
    */
   @JsonResponseInterceptor
   @DeleteMapping(path = "/{officeCode}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  @Operation(tags = "Offices", description = "Elimina una oficina", summary = "Elimina una oficina")
   public ResponseEntity<GenericResponseDto<Boolean>> delete( @PathVariable("officeCode") String officeCode )
   {
     var result = this.officeFacade.delete( officeCode );
