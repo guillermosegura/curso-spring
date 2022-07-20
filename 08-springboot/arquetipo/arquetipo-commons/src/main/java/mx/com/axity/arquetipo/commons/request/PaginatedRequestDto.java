@@ -17,6 +17,25 @@ public class PaginatedRequestDto
   private int offset;
 
   /**
+   * Constructor default
+   */
+  public PaginatedRequestDto()
+  {
+  }
+
+  /**
+   * Constructor por límite y offset
+   * 
+   * @param limit
+   * @param offset
+   */
+  public PaginatedRequestDto( int limit, int offset )
+  {
+    this.limit = limit;
+    this.offset = offset;
+  }
+
+  /**
    * {@inheritDoc}
    */
   @Override

@@ -20,7 +20,7 @@ public class HeaderDto
 {
   private int code;
   private String message;
-  private String trace;
+  private String detail;
 
   /**
    * Constructor default
@@ -44,17 +44,17 @@ public class HeaderDto
   }
 
   /**
-   * Constructor por código, mensaje y traza
+   * Constructor por código, mensaje y detalle
    * 
    * @param code
    * @param message
-   * @param trace
+   * @param detail
    */
-  public HeaderDto( int code, String message, String trace )
+  public HeaderDto( int code, String message, String detail )
   {
     this.code = code;
     this.message = message;
-    this.trace = trace;
+    this.detail = detail;
   }
   
   /**

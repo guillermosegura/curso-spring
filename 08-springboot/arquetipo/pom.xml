@@ -61,6 +61,10 @@
       <artifactId>jcl-over-slf4j</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
     </dependency>
@@ -102,10 +106,11 @@
   </build>
 
   <modules>
-    <module>arquetipo-application</module>
     <module>arquetipo-commons</module>
     <module>arquetipo-model</module>
     <module>arquetipo-persistence</module>
     <module>arquetipo-service</module>
+    <module>arquetipo-facade</module>
+    <module>arquetipo-api</module>
   </modules>
 </project>

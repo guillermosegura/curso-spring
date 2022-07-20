@@ -11,6 +11,7 @@ import mx.com.axity.arquetipo.commons.enums.ErrorCode;
 @Getter
 public class BusinessException extends RuntimeException
 {
+  private static final long serialVersionUID = 7665760496552274896L;
   private int code;
 
   /**
