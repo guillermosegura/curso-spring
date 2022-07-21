@@ -92,6 +92,22 @@
       <artifactId>springdoc-openapi-ui</artifactId>
       <version>1.6.4</version>
     </dependency>
+
+    <!-- GraphQL -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-graphql</artifactId>
+    </dependency>
+    
+    <!-- QueryDSL -->
+    <dependency>
+      <groupId>com.querydsl</groupId>
+      <artifactId>querydsl-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.querydsl</groupId>
+      <artifactId>querydsl-apt</artifactId>
+    </dependency>
   </dependencies>
 
   <build>

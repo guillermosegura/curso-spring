@@ -6,6 +6,8 @@ import mx.com.axity.arquetipo.commons.response.GenericResponseDto;
 import mx.com.axity.arquetipo.commons.response.PaginatedResponseDto;
 
 /**
+ * Interface de servicios para oficinas
+ * 
  * @author guillermo.segura@axity.com
  */
 public interface OfficeService
