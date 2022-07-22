@@ -77,7 +77,7 @@ public class EmployeeServiceImpl implements EmployeeService
       var result = this.employeeGraphQLRepository.findAll( ExpressionUtils.allOf( predicates ) );
       result.forEach( employeeDO -> employees.add( EmployeeResponseDtoTransformer.transform( employeeDO ) ) );
     }
-
+    
     return employees;
   }
 
