@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,14 @@ import com.axity.springmvc.exception.Module;
 import com.axity.springmvc.services.OfficeService;
 import com.axity.springmvc.to.Office;
 import com.axity.springmvc.to.PaginatedResponse;
+import com.axity.springmvc.to.openapi.OfficeResponse;
 import com.axity.springmvc.util.Validator;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 /**
  * Controlador base de oficinas
@@ -30,17 +38,19 @@ import com.axity.springmvc.util.Validator;
  */
 @RestController
 @RequestMapping("/api/offices")
+@CrossOrigin(origins = "*")
 public class OfficeRestController
 {
 
   @Autowired
-  private OfficeService officeService;
+  private OfficeService officeService; 
 
   /**
    * Atiende la petición Rest de consulta de oficinas
    * 
    * @return
    */
+  @Operation(tags = "Offices", description = "Consulta las oficinas", summary = "Consulta las oficinas")
   @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> getOffices( @RequestParam(required = false, defaultValue = "0") int page,
@@ -50,6 +60,12 @@ public class OfficeRestController
     return new ResponseEntity<>( offices, HttpStatus.OK );
   }
 
+  @Operation(tags = "Offices", description = "Consulta la oficina por el officeCode", summary = "Consulta la oficina por el officeCode")
+  @ApiResponses(value= {
+      @ApiResponse(responseCode = "200", description = "Oficina encontrada",
+          content = { @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+            schema = @Schema(implementation = OfficeResponse.class))})
+  })
   @GetMapping(path = "/{officeCode}", produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> findOfficeById( @PathVariable("officeCode") String officeCode )
@@ -73,6 +89,7 @@ public class OfficeRestController
    * @param office
    * @return
    */
+  @Operation(tags = "Offices", description = "Crea una oficina", summary = "Crea una oficina")
   @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> create( @RequestBody Office office )
@@ -98,6 +115,7 @@ public class OfficeRestController
    * @param officeCode
    * @return
    */
+  @Operation(tags = "Offices", description = "Edita una oficina", summary = "Edita una oficina")
   @PutMapping(value = "/{officeCode}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> edit( @RequestBody Office office, @PathVariable("officeCode") String officeCode )
@@ -122,6 +140,7 @@ public class OfficeRestController
    * @param officeCode
    * @return
    */
+  @Operation(tags = "Offices", description = "Elimina una oficina", summary = "Elimina una oficina")
   @DeleteMapping(value = "/{officeCode}", produces = MediaType.APPLICATION_JSON_VALUE)
   @JsonResponseIntercept(Module.OFFICE)
   public ResponseEntity<Serializable> delete( @PathVariable("officeCode") String officeCode )

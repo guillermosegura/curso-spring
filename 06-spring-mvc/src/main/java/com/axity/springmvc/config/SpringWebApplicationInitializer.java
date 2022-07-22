@@ -1,48 +1,28 @@
 package com.axity.springmvc.config;
 
-import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-import com.axity.springmvc.aop.LoggingFilter;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 /**
  * Inicializa el contexto de Spring y registra el servlet
  * 
  * @author guillermo.segura@axity.com
  */
-public class SpringWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
+public class SpringWebApplicationInitializer implements WebApplicationInitializer
 {
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected Class<?>[] getRootConfigClasses()
+  public void onStartup( ServletContext servletContext ) throws ServletException
   {
-    return null;
-  }
+    AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+    context.register( WebConfig.class );
+    context.setServletContext( servletContext );
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected Class<?>[] getServletConfigClasses()
-  {
-    return new Class<?>[] { WebConfig.class };
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected String[] getServletMappings()
-  {
-    return new String[] { "/" };
-  }
-
-  @Override
-  protected Filter[] getServletFilters()
-  {
-    return new Filter[] { new LoggingFilter() };
+    ServletRegistration.Dynamic servlet = servletContext.addServlet( "dispatcher", new DispatcherServlet( context ) );
+    servlet.setLoadOnStartup( 1 );
+    servlet.addMapping( "/" );
   }
 }

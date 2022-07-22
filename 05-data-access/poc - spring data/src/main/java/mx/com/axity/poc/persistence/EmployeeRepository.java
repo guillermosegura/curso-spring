@@ -3,12 +3,14 @@ package mx.com.axity.poc.persistence;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import mx.com.axity.poc.entity.EmployeeDO;
 
 /**
  * @author guillermo.segura@axity.com
  */
+@Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeDO, Long>
 {
 
