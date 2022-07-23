@@ -4,6 +4,9 @@
 
 1. Inyección por anotaciones con Anotaciones
    - [beans.xml](src/main/resources/beans.xml)
+   - [Controller](src/main/java/mx/com/axity/poc/controller/Controller.java)
+   - [Service](src/main/java/mx/com/axity/poc/service/impl/ServiceImpl.java)
+   - [DataDao](src/main/java/mx/com/axity/poc/dao/impl/DataDAOImpl.java);
   
 #### Requisitos:
 - Java 11 [Open JDK11](https://jdk.java.net/java-se-ri/11)
