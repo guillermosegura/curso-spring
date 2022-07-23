@@ -28,7 +28,7 @@ public class ServiceImpl implements Service
 
   public void setDataDAO( DataDAO dataDAO )
   {
-    System.out.println("Se inyecta DataDAO");
+    System.out.println( "Se inyecta DataDAO" );
     this.dataDAO = dataDAO;
   }
 
