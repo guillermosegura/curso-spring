@@ -24,7 +24,6 @@ public class AnotherSimpleServiceImpl implements SimpleService
     LOG.info( "doSomethingElse" );
   }
 
-  @Intercept
   @Override
   public void hello( String str )
   {

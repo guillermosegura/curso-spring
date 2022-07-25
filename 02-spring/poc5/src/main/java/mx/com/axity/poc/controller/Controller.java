@@ -37,12 +37,12 @@ public class Controller
   public void init()
   {
     // LOG.info( "Llamando método init" );
-    LOG.fatal( "Ocurrió un error irrecuperable, la aplicación no puede continuar" );
-    LOG.error( "Ocurrió un error de negocio y/o comunicaciones" );
-    LOG.warn( "Mensaje de advertencia" );
-    LOG.info( "Mensaje informativo, provee data necesaria para análisis posterior" );
-    LOG.debug( "Mensaje a nivel debug, datos para diagnosticar" );
-    LOG.trace( "Menor nivel de bitacoreo (Paso 1...n)" );
+//    LOG.fatal( "Ocurrió un error irrecuperable, la aplicación no puede continuar" );
+//    LOG.error( "Ocurrió un error de negocio y/o comunicaciones" );
+//    LOG.warn( "Mensaje de advertencia" );
+//    LOG.info( "Mensaje informativo, provee data necesaria para análisis posterior" );
+//    LOG.debug( "Mensaje a nivel debug, datos para diagnosticar" );
+//    LOG.trace( "Menor nivel de bitacoreo (Paso 1...n)" );
   }
 
   public void save( Data data )

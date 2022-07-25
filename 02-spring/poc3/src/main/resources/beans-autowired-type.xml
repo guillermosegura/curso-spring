@@ -10,7 +10,7 @@
   <bean id="original" class="mx.com.axity.poc.service.impl.ServiceImpl"
     autowire="byType" />
 
-  <bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
+  <bean id="qw" class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
   
 <!--   <bean id="dataDAOPro" class="mx.com.axity.poc.dao.impl.DataDAOPro" /> -->
 

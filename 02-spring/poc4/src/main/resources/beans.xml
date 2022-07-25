@@ -15,6 +15,9 @@
 
   <bean id="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
 
+  <bean id="dataDAOPro" class="mx.com.axity.poc.dao.impl.DataDAOPro" />
+
+
   <bean name="myData" class="mx.com.axity.poc.to.Data">
     <property name="id" value="1" />
     <property name="name" value="Azul" />

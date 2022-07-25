@@ -16,6 +16,7 @@ public class DataDAOPro implements DataDAO
   @Override
   public void insert( Data data )
   {
+    System.out.println( "DataDAOPro" );
     StringBuilder sb = new StringBuilder();
     Gson gson = new Gson();
     sb.append( "Uso magia: " + gson.toJson( data ) );

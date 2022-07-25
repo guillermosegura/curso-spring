@@ -8,6 +8,6 @@
   <bean id="service" name="service,myService,otroServicio" class="mx.com.axity.poc.service.impl.ServiceImpl"
     autowire="byName" />
 
-  <bean name="dataDAO" class="mx.com.axity.poc.dao.impl.DataDAOImpl" />
-  <bean name="dataDAOPro" class="mx.com.axity.poc.dao.impl.DataDAOPro" />
+<!--   <bean name="dataOld" class="mx.com.axity.poc.dao.impl.DataDAOImpl" /> -->
+  <bean name="n" class="mx.com.axity.poc.dao.impl.DataDAOPro" />
 </beans>

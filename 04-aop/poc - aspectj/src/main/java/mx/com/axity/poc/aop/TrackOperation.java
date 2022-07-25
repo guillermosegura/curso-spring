@@ -124,8 +124,8 @@ public class TrackOperation
   {
     if( operation != null )
     {
-      LOG.error( "After throwing params {} operation, values: a={},  b={}", jp.getSignature().getName(), operation.getA(),
-        operation.getB() );
+      LOG.error( "After throwing params {} operation, values: a={},  b={}", jp.getSignature().getName(),
+        operation.getA(), operation.getB() );
     }
     LOG.error( error.getMessage() );
   }
@@ -142,8 +142,8 @@ public class TrackOperation
       if( args != null && args.length == 1 && args[0] instanceof Operation )
       {
         operation = (Operation) args[0];
-        LOG.info( "Before aroundAdvice {} operation, values: a={},  b={}", pjp.getSignature().getName(), operation.getA(),
-          operation.getB() );
+        LOG.info( "Before aroundAdvice {} operation, values: a={},  b={}", pjp.getSignature().getName(),
+          operation.getA(), operation.getB() );
 
         if( operation.getA() == null )
         {
@@ -189,8 +189,8 @@ public class TrackOperation
     {
       if( operation != null )
       {
-        LOG.info( "Before aroundParamsAdvice {} operation, values: a={},  b={}", pjp.getSignature().getName(), operation.getA(),
-          operation.getB() );
+        LOG.info( "Before aroundParamsAdvice {} operation, values: a={},  b={}", pjp.getSignature().getName(),
+          operation.getA(), operation.getB() );
 
         if( operation.getA() == null )
         {
@@ -219,7 +219,7 @@ public class TrackOperation
     }
     catch( Throwable e )
     {
-      LOG.error("aroundParamsAdvice excepcion: ", e.getMessage()  );
+      LOG.error( "aroundParamsAdvice excepcion: ", e.getMessage() );
       result = extractOperation( operation );
       ((Operation) result).setCode( 2 );
       ((Operation) result).setMessage( e.getMessage() );
@@ -237,9 +237,8 @@ public class TrackOperation
     LOG.info( "interceptClass.After calling method '{}'", pjp.getSignature().getName() );
     return result;
   }
-  
-  @Around("execution (* mx.com.axity.poc.service.*.*(..))"
-      + " and @annotation(mx.com.axity.poc.aop.Intercept)")
+
+  @Around("execution (* mx.com.axity.poc.service.*.*(..))" + " and @annotation(mx.com.axity.poc.aop.Intercept)")
   public Object interceptMethodAdvice( ProceedingJoinPoint pjp ) throws Throwable
   {
     Object result = null;
@@ -248,4 +247,5 @@ public class TrackOperation
     LOG.info( "interceptMethod.After calling method '{}'", pjp.getSignature().getName() );
     return result;
   }
+
 }

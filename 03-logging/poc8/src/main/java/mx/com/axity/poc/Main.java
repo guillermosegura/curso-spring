@@ -25,8 +25,8 @@ public class Main
 
     int a = 1;
     String cadena = "cadena";
-    String msg = "Valor " + 1 + "-" + "cadena";
-    LOG.info( msg );
+//    String msg = "Valor " + 1 + "-" + "cadena";
+    LOG.info( "Este es un mensaje {} {} {}", a, cadena, data );
   }
 
 }

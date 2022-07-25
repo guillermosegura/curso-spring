@@ -5,15 +5,20 @@ import mx.com.axity.poc.to.Data;
 
 public class DataDAOImpl implements DataDAO
 {
-  
-  public DataDAOImpl(){
-    System.out.println("Crea el bean DataDAOImpl");
+  public DataDAOImpl()
+  {
+    System.out.println( "Se crea DataDAOImpl" );
   }
-  
+
+  public DataDAOImpl( int n )
+  {
+    System.out.println( "Crea el bean DataDAOImpl N:" + n );
+  }
 
   @Override
   public void insert( Data data )
   {
+    System.out.println( "DataDAOImpl" );
     StringBuilder sb = new StringBuilder();
     sb.append( "INSERT INTO TBL_DATA (NAME, LASTNAME) VALUES (" );
     sb.append( "'" ).append( data.getName() ).append( "'," );

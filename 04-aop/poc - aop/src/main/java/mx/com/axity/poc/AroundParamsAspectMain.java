@@ -21,7 +21,7 @@ public class AroundParamsAspectMain
     ArithmeticController arithmeticController = context.getBean( ArithmeticController.class );
 
     Operation op = OperationFactory.add( 1, 3 );
-    op.setB( null );
+//    op.setB( null );
     op = arithmeticController.execute( op );
 //    op = OperationFactory.add( 2, 4 );
 //    op = arithmeticController.execute( op );

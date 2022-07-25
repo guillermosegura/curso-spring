@@ -18,6 +18,7 @@ public class Controller
 
   public Controller( Service service )
   {
+    System.out.println("Se crea Controller y se inyecta el servicio");
     this.service = service;
   }
 

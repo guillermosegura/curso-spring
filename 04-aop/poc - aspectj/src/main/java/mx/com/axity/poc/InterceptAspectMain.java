@@ -17,13 +17,13 @@ public class InterceptAspectMain
 
     ApplicationContext context = new AnnotationConfigApplicationContext( AppConfig.class );
 
-//    SimpleService simpleService = context.getBean( "simpleService", SimpleService.class );
-//    simpleService.doSomething();
-//    simpleService.doSomethingElse();
+    SimpleService simpleService = context.getBean( "simpleService", SimpleService.class );
+    simpleService.doSomething();
+    simpleService.doSomethingElse();
     
-    SimpleService anotherSimpleService = context.getBean( "anotherSimpleService", SimpleService.class );
-    anotherSimpleService.doSomething();
-    anotherSimpleService.doSomethingElse();
+//    SimpleService anotherSimpleService = context.getBean( "anotherSimpleService", SimpleService.class );
+//    anotherSimpleService.doSomething();
+//    anotherSimpleService.doSomethingElse();
 
   }
 

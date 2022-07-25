@@ -20,15 +20,15 @@ public class AroundAspectMain
 
     ArithmeticController arithmeticController = context.getBean( ArithmeticController.class );
 
-    Operation op = OperationFactory.divide( 1, 0 );
+    Operation op = OperationFactory.divide( 10, 2 );
     // op.setB( null );
     //op = arithmeticController.execute( op );
     // op = OperationFactory.add( 2, 4 );
     // op = arithmeticController.execute( op );
     // op = OperationFactory.add( 4, 5 );
     // op = arithmeticController.execute( op );
-     op = OperationFactory.add( 6, 6 );
-     op.setA( null );
+     op = OperationFactory.divide( 6, 0 );
+//     op.setA( null );
      op = arithmeticController.execute( op );
 
     LOG.info( "{}", op );
