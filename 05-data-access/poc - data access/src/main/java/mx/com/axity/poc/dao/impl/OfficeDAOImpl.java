@@ -2,6 +2,7 @@ package mx.com.axity.poc.dao.impl;
 
 import java.util.List;
 
+import mx.com.axity.poc.aop.Intercept;
 import mx.com.axity.poc.dao.OfficeDAO;
 import mx.com.axity.poc.dao.mapper.OfficeMapper;
 import mx.com.axity.poc.to.Office;
@@ -9,12 +10,16 @@ import mx.com.axity.poc.to.Office;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Implementación del dao {@link mx.com.axity.poc.dao.OfficeDAO}
  * 
  * @author guillermo.segura@axity.com
  */
+@Intercept
+@Transactional
 public class OfficeDAOImpl implements OfficeDAO
 {
 
@@ -22,8 +27,7 @@ public class OfficeDAOImpl implements OfficeDAO
       + " addressLine2, state, country, postalCode, territory " //
       + " FROM offices ORDER BY officeCode";
 
-  private static final String QUERY_FIND_BY_TERRITORY = 
-      "SELECT officeCode, city, phone, addressLine1,"
+  private static final String QUERY_FIND_BY_TERRITORY = "SELECT officeCode, city, phone, addressLine1,"
       + " addressLine2, state, country, postalCode, territory " //
       + " FROM offices"//
       + " WHERE territory = ?" //
@@ -62,17 +66,18 @@ public class OfficeDAOImpl implements OfficeDAO
   @Override
   public List<Office> findByTerritory( String territory )
   {
-    return this.jdbcTemplate.query( QUERY_FIND_BY_TERRITORY, new OfficeMapper(), territory);
+    return this.jdbcTemplate.query( QUERY_FIND_BY_TERRITORY, new OfficeMapper(), territory );
   }
-  
+
   /**
    * {@inheritDoc}
    */
   @Override
-  public List<Office> findByTerritoryLambda( String territory ){
-    return this.jdbcTemplate.query( QUERY_FIND_BY_TERRITORY, (rs, rowNum) -> {
+  public List<Office> findByTerritoryLambda( String territory )
+  {
+    return this.jdbcTemplate.query( QUERY_FIND_BY_TERRITORY, ( rs, rowNum ) -> {
       var office = new Office();
-      office.setOfficeCode( rs.getString( "officeCode" ) ); // 1 
+      office.setOfficeCode( rs.getString( "officeCode" ) ); // 1
       office.setCity( rs.getString( "city" ) );
       office.setPhone( rs.getString( "phone" ) );
       office.setAddressLine1( rs.getString( "addressLine1" ) );
@@ -82,7 +87,7 @@ public class OfficeDAOImpl implements OfficeDAO
       office.setPostalCode( rs.getString( "postalCode" ) );
       office.setTerritory( rs.getString( "territory" ) );
       return office;
-    }, territory);
+    }, territory );
   }
 
   /**
@@ -112,8 +117,7 @@ public class OfficeDAOImpl implements OfficeDAO
 
     if( this.get( office.getOfficeCode() ) == null )
     {
-      this.jdbcTemplate.update(
-        QUERY_CREATE,
+      this.jdbcTemplate.update( QUERY_CREATE,
         new Object[] { office.getOfficeCode(), office.getCity(), office.getPhone(), office.getAddressLine1(),
             office.getAddressLine2(), office.getState(), office.getCountry(), office.getPostalCode(),
             office.getTerritory() } );
@@ -133,8 +137,7 @@ public class OfficeDAOImpl implements OfficeDAO
   {
     if( this.get( office.getOfficeCode() ) != null )
     {
-      this.jdbcTemplate.update(
-        QUERY_UPDATE,
+      this.jdbcTemplate.update( QUERY_UPDATE,
         new Object[] { office.getCity(), office.getPhone(), office.getAddressLine1(), office.getAddressLine2(),
             office.getState(), office.getCountry(), office.getPostalCode(), office.getTerritory(),
             office.getOfficeCode() } );
@@ -152,7 +155,7 @@ public class OfficeDAOImpl implements OfficeDAO
   @Override
   public void delete( String officeCode )
   {
-    this.jdbcTemplate.update( QUERY_DELETE, new Object[] { officeCode } );
+    this.jdbcTemplate.update( QUERY_DELETE, officeCode );
 
   }
 

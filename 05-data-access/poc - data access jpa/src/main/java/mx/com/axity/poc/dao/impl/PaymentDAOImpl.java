@@ -7,17 +7,21 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import mx.com.axity.poc.dao.PaymentDAO;
-import mx.com.axity.poc.entity.PaymentDO;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+
+import mx.com.axity.poc.aop.Intercept;
+import mx.com.axity.poc.dao.PaymentDAO;
+import mx.com.axity.poc.entity.PaymentDO;
 
 /**
  * Implementacion de la interface {@link mx.com.axity.poc.dao.impl.PaymentDAOImpl}
  * 
  * @author guillermo.segura@axity.com
  */
+@Intercept
+@Repository
 public class PaymentDAOImpl implements PaymentDAO
 {
 

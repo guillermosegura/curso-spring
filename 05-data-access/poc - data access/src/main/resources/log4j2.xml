@@ -8,7 +8,10 @@
   <Loggers>
     <!-- <Logger name="org.springframework.beans.factory" level="DEBUG"/> -->
     <Logger name="mx.com.axity.poc" level="TRACE" />
-    <Logger name="mx.com.axity.poc.dao" level="DEBUG" />
+    <Logger name="mx.com.axity.poc" level="TRACE" />
+    <Logger name="org.springframework.jdbc" level="DEBUG" />
+    <Logger name="org.springframework.jdbc.datasource.init" level="WARN" />
+    <Logger name="org.springframework.transaction" level="DEBUG" />
     <Root level="WARN">
       <AppenderRef ref="Console" />
     </Root>

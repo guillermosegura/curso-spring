@@ -7,17 +7,21 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import mx.com.axity.poc.dao.EmployeeDAO;
-import mx.com.axity.poc.entity.EmployeeDO;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+
+import mx.com.axity.poc.aop.Intercept;
+import mx.com.axity.poc.dao.EmployeeDAO;
+import mx.com.axity.poc.entity.EmployeeDO;
 
 /**
  * Implementación de la interface {@link mx.com.axity.poc.dao.EmployeeDAO}
  * 
  * @author guillermo.segura@axity.com
  */
+@Intercept
+@Repository
 public class EmployeeDAOImpl implements EmployeeDAO
 {
   private static final Logger LOG = LoggerFactory.getLogger( EmployeeDAOImpl.class );

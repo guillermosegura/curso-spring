@@ -1,12 +1,12 @@
 package mx.com.axity.poc;
 
-import mx.com.axity.poc.service.OfficeService;
-import mx.com.axity.poc.to.Office;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import mx.com.axity.poc.service.OfficeService;
+import mx.com.axity.poc.to.Office;
 
 public class OfficesCreateMain
 {
@@ -14,6 +14,7 @@ public class OfficesCreateMain
 
   public static void main( String[] args )
   {
+    LOG.trace( "init" );
     ApplicationContext context = new ClassPathXmlApplicationContext( "beans-h2embedded.xml" );
 
     OfficeService officeService = context.getBean( OfficeService.class );
@@ -29,8 +30,18 @@ public class OfficesCreateMain
     office.setPostalCode( "11560" );
     office.setTerritory( "LATAM" );
 
+    LOG.trace( "-> create" );
     officeService.create( office );
+    LOG.trace( "<- create" );
     
+    var created = officeService.get( "9" );
+    LOG.debug( "Office: {}", created );
     
+    LOG.trace( "-> delete" );
+    officeService.delete( "9");
+    LOG.trace( "-> delete" );
+    
+    created = officeService.get( "9" );
+    LOG.debug( "Office: {}", created );
   }
 }

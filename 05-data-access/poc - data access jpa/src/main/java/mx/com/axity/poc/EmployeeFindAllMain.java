@@ -1,10 +1,5 @@
 package mx.com.axity.poc;
 
-import java.util.List;
-
-import mx.com.axity.poc.dao.EmployeeDAO;
-import mx.com.axity.poc.entity.EmployeeDO;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -12,6 +7,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import mx.com.axity.poc.dao.EmployeeDAO;
+import mx.com.axity.poc.entity.EmployeeDO;
 
 public class EmployeeFindAllMain
 {

@@ -19,6 +19,8 @@ public class OfficesFindAllMain
     ApplicationContext context = new ClassPathXmlApplicationContext( "beans-h2embedded.xml" );
 
     OfficeService officeService = context.getBean( OfficeService.class );
+    
+    LOG.info( "--> main" );
     List<Office> offices = officeService.findAll();
 
     for( Office office : offices )

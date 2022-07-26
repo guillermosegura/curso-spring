@@ -21,14 +21,14 @@
   <!-- DAOs -->
   <bean name="officeDAO" class="mx.com.axity.poc.dao.impl.OfficeDAOImpl" />
   <bean name="employeeDAO" class="mx.com.axity.poc.dao.impl.EmployeeDAOImpl" />
-  
+
   <jdbc:embedded-database id="dataSource" type="H2">
     <jdbc:script location="classpath:schema.sql" />
     <jdbc:script location="classpath:data.sql" />
   </jdbc:embedded-database>
 
   <tx:annotation-driven transaction-manager="txManager" />
-  
+
   <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="entityManagerFactory" />
   </bean>
@@ -43,23 +43,27 @@
   </tx:advice>
 
   <aop:config>
-    <aop:pointcut id="serviceOperation"
-      expression="execution(* mx.com.axity.poc.service.*.*(..))" />
+    <aop:pointcut id="serviceOperation" expression="execution(* mx.com.axity.poc.*.*(..))" />
     <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
   </aop:config>
 
-  <bean id="entityManagerFactory"
-    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="dataSource" ref="dataSource" />
     <property name="packagesToScan" value="mx.com.axity.poc.entity" />
     <property name="jpaVendorAdapter">
-      <bean
-        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
     </property>
     <property name="loadTimeWeaver">
-      <bean
-        class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+      <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
     </property>
   </bean>
+
+  <bean id="trackOperation" class="mx.com.axity.poc.aop.TrackOperation" />
+  <aop:config>
+    <aop:aspect id="interceptClassAspect" ref="trackOperation">
+      <aop:pointcut id="interceptClassPointCut" expression="within (@mx.com.axity.poc.aop.Intercept *)" />
+      <aop:around method="interceptAdvice" pointcut-ref="interceptClassPointCut" />
+    </aop:aspect>
+  </aop:config>
 
 </beans>

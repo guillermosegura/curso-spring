@@ -10,7 +10,9 @@ import javax.persistence.TypedQuery;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
+import mx.com.axity.poc.aop.Intercept;
 import mx.com.axity.poc.dao.OfficeDAO;
 import mx.com.axity.poc.entity.EmployeeDO;
 import mx.com.axity.poc.entity.OfficeDO;
@@ -20,6 +22,8 @@ import mx.com.axity.poc.entity.OfficeDO;
  * 
  * @author guillermo.segura@axity.com
  */
+@Intercept
+@Repository
 public class OfficeDAOImpl implements OfficeDAO
 {
   private static final Logger LOG = LoggerFactory.getLogger( OfficeDAOImpl.class );
