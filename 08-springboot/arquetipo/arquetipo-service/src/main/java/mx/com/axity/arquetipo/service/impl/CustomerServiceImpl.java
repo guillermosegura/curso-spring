@@ -1,5 +1,7 @@
 package mx.com.axity.arquetipo.service.impl;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -8,10 +10,9 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import mx.com.axity.arquetipo.commons.dto.CustomerDto;
-import mx.com.axity.arquetipo.commons.enums.ErrorCode;
 import mx.com.axity.arquetipo.commons.request.PaginatedRequestDto;
 import mx.com.axity.arquetipo.commons.response.PaginatedResponseDto;
-import mx.com.axity.arquetipo.commons.util.ValidationUtil;
+import mx.com.axity.arquetipo.model.CustomerDO;
 import mx.com.axity.arquetipo.persistence.CustomerPersistence;
 import mx.com.axity.arquetipo.service.CustomerService;
 import mx.com.axity.arquetipo.service.util.CustomerDtoTransformer;
@@ -66,8 +67,22 @@ public class CustomerServiceImpl implements CustomerService
   @Override
   public CustomerDto create( CustomerDto customer )
   {
-    return null;
-  }
+    var entity = new CustomerDO();
+    entity.setCustomerName( customer.getCustomerName() );
+    entity.setContactFirstName( customer.getContactFirstName() );
+    entity.setContactLastName( customer.getContactLastName() );
+    entity.setCity( customer.getCity() );
+    entity.setAddressLine1( customer.getAddressLine1() );
+    entity.setAddressLine2( customer.getAddressLine2() );
+    entity.setCountry( customer.getCountry() );
+    entity.setCreditLimit( customer.getCreditLimit() );
+    entity.setPhone( customer.getPhone() );
+    entity.setPostalCode( customer.getPostalCode() );
+    entity.setState( customer.getState() );
 
+    var saved = this.customerPersistence.save( entity );
+    customer.setCustomerNumber( saved.getCustomerNumber() );
+    return customer;
+  }
 
 }

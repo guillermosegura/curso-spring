@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 
 import mx.com.axity.arquetipo.commons.dto.CustomerDto;
 import mx.com.axity.arquetipo.commons.request.PaginatedRequestDto;
+import mx.com.axity.arquetipo.commons.response.GenericResponseDto;
 import mx.com.axity.arquetipo.commons.response.PaginatedResponseDto;
 import mx.com.axity.arquetipo.facade.CustomerFacade;
 import mx.com.axity.arquetipo.service.CustomerService;
 
 /**
  * @author guillermo.segura@axity.com
- *
  */
 @Service
 public class CustomerFacadeImpl implements CustomerFacade
@@ -25,25 +25,25 @@ public class CustomerFacadeImpl implements CustomerFacade
   @Override
   public PaginatedResponseDto<CustomerDto> findCustomers( PaginatedRequestDto request )
   {
-    return this.customerService.findCustomers(request);
+    return this.customerService.findCustomers( request );
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public CustomerDto findCustomer( Long customerNumber )
+  public GenericResponseDto<CustomerDto> findCustomer( Long customerNumber )
   {
-    return this.customerService.findCustomer( customerNumber );
+    return new GenericResponseDto<>( this.customerService.findCustomer( customerNumber ) );
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public CustomerDto create( CustomerDto customer )
+  public GenericResponseDto<CustomerDto> create( CustomerDto customer )
   {
-    return this.customerService.create(customer);
+    return new GenericResponseDto<>( this.customerService.create( customer ) );
   }
 
 }

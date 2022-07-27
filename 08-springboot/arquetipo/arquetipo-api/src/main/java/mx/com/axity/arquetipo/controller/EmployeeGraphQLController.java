@@ -37,7 +37,8 @@ public class EmployeeGraphQLController
   public List<EmployeeGraphQLDto> getAllEmployees( @Argument String lastName, @Argument String firstName,
       @Argument String email, DataFetchingEnvironment env )
   {
-    return this.employeeFacade.getAllEmployees( lastName, firstName, email, env );
+    var result = this.employeeFacade.getAllEmployees( lastName, firstName, email, env );
+    return result;
   }
 
   /**

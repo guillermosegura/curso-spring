@@ -2,6 +2,7 @@ package mx.com.axity.arquetipo.facade;
 
 import mx.com.axity.arquetipo.commons.dto.CustomerDto;
 import mx.com.axity.arquetipo.commons.request.PaginatedRequestDto;
+import mx.com.axity.arquetipo.commons.response.GenericResponseDto;
 import mx.com.axity.arquetipo.commons.response.PaginatedResponseDto;
 
 /**
@@ -24,7 +25,7 @@ public interface CustomerFacade
    * @param customerNumber
    * @return
    */
-  CustomerDto findCustomer( Long customerNumber );
+  GenericResponseDto<CustomerDto> findCustomer( Long customerNumber );
 
   /**
    * Alta de clientes
@@ -32,5 +33,5 @@ public interface CustomerFacade
    * @param customer
    * @return
    */
-  CustomerDto create( CustomerDto customer );
+  GenericResponseDto<CustomerDto> create( CustomerDto customer );
 }
