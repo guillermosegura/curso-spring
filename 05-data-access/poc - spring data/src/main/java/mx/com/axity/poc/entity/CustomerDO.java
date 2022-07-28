@@ -26,7 +26,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "customers")
 @NamedQueries({
-  @NamedQuery(name = "CustomerDO.queryPorEstado", query = "SELECT o FROM CustomerDO o WHERE o.state = ?1"),
+  @NamedQuery(name = "CustomerDO.queryPorEstado", 
+      query = "SELECT o FROM CustomerDO o WHERE o.state = ?1"),
   @NamedQuery(name = "CustomerDO.queryPorEstadoCodigoPostal", 
     query = "SELECT o FROM CustomerDO o"
         + " WHERE o.state = :estado"

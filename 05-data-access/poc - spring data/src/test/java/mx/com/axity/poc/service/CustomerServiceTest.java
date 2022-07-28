@@ -54,4 +54,28 @@ public class CustomerServiceTest
     Assert.assertNotNull( payments );
     payments.stream().forEach( o -> LOG.info( "{}", o ) );
   }
+  
+  @Test
+  public void testFindCustomerPaymentsConstructor()
+  {
+    var payments = this.customerService.findCustomerPaymentsConstructor( 114L );
+    Assert.assertNotNull( payments );
+    payments.stream().forEach( o -> LOG.info( "{}", o ) );
+  }
+  
+  @Test
+  public void testFindCustomerPaymentsObjectArray()
+  {
+    var payments = this.customerService.findCustomerPaymentsObjectArray( 114L );
+    Assert.assertNotNull( payments );
+    payments.stream().forEach( o -> LOG.info( "{}", o ) );
+  }
+  
+  @Test
+  public void testFindCustomerPaymentsEntity()
+  {
+    var payments = this.customerService.findCustomerPaymentsEntity( 114L );
+    Assert.assertNotNull( payments );
+    payments.stream().forEach( o -> LOG.info( "{}", o ) );
+  }
 }

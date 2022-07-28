@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
+import mx.com.axity.poc.aop.Intercept;
 import mx.com.axity.poc.persistence.EmployeeRepository;
 import mx.com.axity.poc.service.EmployeeService;
 import mx.com.axity.poc.to.Employee;
@@ -13,6 +15,8 @@ import mx.com.axity.poc.util.EmployeeTransformer;
 /**
  * @author guillermo.segura@axity.com
  */
+@Intercept
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService
 {
   @Autowired

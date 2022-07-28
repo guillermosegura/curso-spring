@@ -1,6 +1,7 @@
 package mx.com.axity.poc.to;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,6 +24,7 @@ public class Office implements Serializable
   private String country;
   private String postalCode;
   private String territory;
+  private List<Employee> employees;
 
   /**
    * @return the officeCode
@@ -166,6 +168,22 @@ public class Office implements Serializable
   public void setTerritory( String territory )
   {
     this.territory = territory;
+  }
+
+  /**
+   * @return the employees
+   */
+  public List<Employee> getEmployees()
+  {
+    return employees;
+  }
+
+  /**
+   * @param employees the employees to set
+   */
+  public void setEmployees( List<Employee> employees )
+  {
+    this.employees = employees;
   }
 
   /**

@@ -43,4 +43,27 @@ public interface CustomerService
    */
   List<CustomerPayment> findCustomerPayments( Long customerNumber );
 
+  /**
+   * Consulta los pagos por número de cliente con consulta por constructor
+   * 
+   * @param customerNumber
+   * @return
+   */
+  List<CustomerPayment> findCustomerPaymentsConstructor( Long customerNumber );
+
+  /**
+   * Consulta los pagos por número de cliente con consulta por arreglo
+   * 
+   * @param customerNumber
+   * @return
+   */
+  List<CustomerPayment> findCustomerPaymentsObjectArray( Long customerNumber );
+  
+  /**
+   * Consulta los pagos por número de cliente con consulta por arreglo
+   * 
+   * @param customerNumber
+   * @return
+   */
+  List<CustomerPayment> findCustomerPaymentsEntity( Long customerNumber );
 }

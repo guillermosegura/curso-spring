@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import mx.com.axity.poc.aop.Intercept;
 import mx.com.axity.poc.service.PortfolioService;
 import mx.com.axity.poc.service.StockService;
 import mx.com.axity.poc.to.Stock;
 
+@Intercept
 @Service
 public class PortfolioServiceImpl implements PortfolioService
 {

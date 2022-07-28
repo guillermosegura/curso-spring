@@ -59,6 +59,14 @@ public class OfficeServiceTest
     Assert.assertNotNull( office );
     LOG.info( "{}", office );
   }
+  
+  @Test
+  public void testGetNotExists()
+  {
+    var office = this.officeService.get( "99999" );
+    Assert.assertNull( office );
+    LOG.info( "--> {}", office );
+  }
 
   /**
    * Test method for {@link mx.com.axity.poc.service.impl.OfficeServiceImpl#create(mx.com.axity.poc.to.Office)}.

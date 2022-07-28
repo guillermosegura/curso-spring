@@ -21,10 +21,10 @@
   <!-- Services -->
   <bean name="officeService" class="mx.com.axity.poc.service.impl.OfficeServiceImpl" />
   <bean name="employeeService" class="mx.com.axity.poc.service.impl.EmployeeServiceImpl" />
-  <bean name="customerService" class="mx.com.axity.poc.service.impl.CustomerServiceImpl"/>
+  <bean name="customerService" class="mx.com.axity.poc.service.impl.CustomerServiceImpl" />
 
-  <!-- Repositorios  -->
-  <jpa:repositories base-package="mx.com.axity.poc.persistence"></jpa:repositories>
+  <!-- Repositorios -->
+  <jpa:repositories base-package="mx.com.axity.poc.persistence" />
 
   <jdbc:embedded-database id="dataSource" type="H2">
     <jdbc:script location="classpath:schema.sql" />
@@ -48,7 +48,7 @@
   </tx:advice>
 
   <aop:config>
-    <aop:pointcut id="serviceOperation" expression="execution(* mx.com.axity.poc.service.*.*(..))" />
+    <aop:pointcut id="serviceOperation" expression="execution(* mx.com.axity.poc.*.*(..))" />
     <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
   </aop:config>
 
@@ -66,7 +66,13 @@
     </property>
   </bean>
 
-
+  <bean id="trackOperation" class="mx.com.axity.poc.aop.TrackOperation" />
+  <aop:config>
+    <aop:aspect id="interceptClassAspect" ref="trackOperation">
+      <aop:pointcut id="interceptClassPointCut" expression="within (@mx.com.axity.poc.aop.Intercept *)" />
+      <aop:around method="interceptAdvice" pointcut-ref="interceptClassPointCut" />
+    </aop:aspect>
+  </aop:config>
 
 
 </beans>

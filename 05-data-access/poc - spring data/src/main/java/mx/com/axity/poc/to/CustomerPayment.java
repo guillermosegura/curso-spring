@@ -23,6 +23,25 @@ public class CustomerPayment
 
   private BigDecimal amount;
 
+  public CustomerPayment()
+  {
+  }
+
+  public CustomerPayment( String customerName, 
+      String contactLastName, 
+      String contactFirstName, 
+      String phone, 
+      Date paymentDate, 
+      BigDecimal amount )
+  {
+    this.customerName = customerName;
+    this.contactLastName = contactLastName;
+    this.contactFirstName = contactFirstName;
+    this.phone = phone;
+    this.paymentDate = paymentDate;
+    this.amount = amount;
+  }
+
   /**
    * @return the customerName
    */

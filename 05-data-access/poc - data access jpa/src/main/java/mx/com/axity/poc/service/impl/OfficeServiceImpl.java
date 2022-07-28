@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mx.com.axity.poc.aop.Intercept;
 import mx.com.axity.poc.dao.OfficeDAO;
+import mx.com.axity.poc.entity.EmployeeDO;
 import mx.com.axity.poc.entity.OfficeDO;
 import mx.com.axity.poc.service.OfficeService;
+import mx.com.axity.poc.to.Employee;
 import mx.com.axity.poc.to.Office;
 
 /**
@@ -109,6 +111,19 @@ public class OfficeServiceImpl implements OfficeService
     {
       to = new Office();
       BeanUtils.copyProperties( entity, to );
+
+      if( entity.getEmployees() != null && !entity.getEmployees().isEmpty() )
+      {
+        to.setEmployees( new ArrayList<>() );
+        for( EmployeeDO employeeDO : entity.getEmployees() )
+        {
+          Employee employee = new Employee();
+          employee.setEmployeeNumber( employeeDO.getEmployeeNumber() );
+          employee.setLastName( employeeDO.getLastName() );
+          employee.setFirstName( employeeDO.getFirstName() );
+          to.getEmployees().add( employee );
+        }
+      }
     }
     return to;
   }
